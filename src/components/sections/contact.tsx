@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Terminal as TerminalIcon } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { ContactForm } from "@/components/contact-form";
 
 type LayoutProps = {
     children: React.ReactNode;
@@ -11,13 +12,14 @@ type LayoutProps = {
 
 const commands = {
     help: "Available commands: help, email, socials, status, clear",
-    email: "contact@secure-arch.dev", // user can update this
-    socials: "GitHub: github.com/username | LinkedIn: linkedin.com/in/username",
+    email: "ownerkirimi@gmail.com", // user can update this
+    socials: "GitHub: github.com/denny-smart | LinkedIn: linkedin.com/in/denis-kirimi",
     status: "System Operational. All services running.",
     clear: "CLEAR_ACTION",
 };
 
 export const ContactTerminal = () => {
+    const [mode, setMode] = useState<"terminal" | "form">("terminal");
     const [input, setInput] = useState("");
     const [history, setHistory] = useState<string[]>([
         "Welcome to the secure terminal interface.",
@@ -45,7 +47,9 @@ export const ContactTerminal = () => {
     };
 
     const focusInput = () => {
-        inputRef.current?.focus();
+        if (mode === "terminal") {
+            inputRef.current?.focus();
+        }
     };
 
     return (
@@ -55,52 +59,76 @@ export const ContactTerminal = () => {
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-emerald-500 mb-4">
                         Initiate Handshake
                     </h2>
-                    <p className="text-zinc-400">
-                        Use the terminal below to establish communication protocol.
+                    <p className="text-zinc-400 mb-6">
+                        Use the terminal below to establish communication protocol or switch to secure transmission.
                     </p>
+                    <div className="flex justify-center gap-4 mb-8">
+                        <button
+                            onClick={() => setMode("terminal")}
+                            className={`px-4 py-2 rounded-full text-sm font-mono transition-colors ${mode === "terminal"
+                                ? "bg-emerald-500 text-black font-bold"
+                                : "bg-zinc-800 text-zinc-400 hover:text-white"
+                                }`}
+                        >
+                            Terminal.exe
+                        </button>
+                        <button
+                            onClick={() => setMode("form")}
+                            className={`px-4 py-2 rounded-full text-sm font-mono transition-colors ${mode === "form"
+                                ? "bg-emerald-500 text-black font-bold"
+                                : "bg-zinc-800 text-zinc-400 hover:text-white"
+                                }`}
+                        >
+                            Secure_Form.enc
+                        </button>
+                    </div>
                 </div>
 
-                <Card className="min-h-[400px] bg-black border-zinc-800 font-mono text-sm p-0 overflow-hidden shadow-2xl shadow-emerald-900/10">
-                    <div className="flex items-center gap-2 px-4 py-2 bg-zinc-900 border-b border-zinc-800">
-                        <TerminalIcon className="h-4 w-4 text-emerald-500" />
-                        <span className="text-zinc-400">guest@secure-arch:~</span>
-                        <div className="flex gap-1.5 ml-auto">
-                            <div className="w-3 h-3 rounded-full bg-red-500/20 text-red-500 flex items-center justify-center p-0.5" />
-                            <div className="w-3 h-3 rounded-full bg-yellow-500/20 text-yellow-500" />
-                            <div className="w-3 h-3 rounded-full bg-emerald-500/20 text-emerald-500" />
-                        </div>
-                    </div>
-
-                    <div
-                        className="p-6 h-[350px] overflow-y-auto cursor-text"
-                        onClick={focusInput}
-                    >
-                        <div className="space-y-2">
-                            {history.map((line, i) => (
-                                <div key={i} className={line.startsWith(">") ? "text-zinc-500" : "text-emerald-500"}>
-                                    {line}
-                                </div>
-                            ))}
+                {mode === "terminal" ? (
+                    <Card className="min-h-[400px] bg-black border-zinc-800 font-mono text-sm p-0 overflow-hidden shadow-2xl shadow-emerald-900/10">
+                        <div className="flex items-center gap-2 px-4 py-2 bg-zinc-900 border-b border-zinc-800">
+                            <TerminalIcon className="h-4 w-4 text-emerald-500" />
+                            <span className="text-zinc-400">guest@secure-arch:~</span>
+                            <div className="flex gap-1.5 ml-auto">
+                                <div className="w-3 h-3 rounded-full bg-red-500/20 text-red-500 flex items-center justify-center p-0.5" />
+                                <div className="w-3 h-3 rounded-full bg-yellow-500/20 text-yellow-500" />
+                                <div className="w-3 h-3 rounded-full bg-emerald-500/20 text-emerald-500" />
+                            </div>
                         </div>
 
-                        <form onSubmit={handleCommand} className="mt-2 flex items-center gap-2">
-                            <span className="text-emerald-500">{">"}</span>
-                            <input
-                                ref={inputRef}
-                                type="text"
-                                value={input}
-                                onChange={(e) => setInput(e.target.value)}
-                                className="bg-transparent border-none outline-none text-emerald-500 w-full placeholder-zinc-800"
-                                autoFocus
-                            />
-                            <motion.div
-                                animate={{ opacity: [1, 0] }}
-                                transition={{ duration: 0.8, repeat: Infinity }}
-                                className="w-2 h-4 bg-emerald-500"
-                            />
-                        </form>
-                    </div>
-                </Card>
+                        <div
+                            className="p-6 h-[350px] overflow-y-auto cursor-text"
+                            onClick={focusInput}
+                        >
+                            <div className="space-y-2">
+                                {history.map((line, i) => (
+                                    <div key={i} className={line.startsWith(">") ? "text-zinc-500" : "text-emerald-500"}>
+                                        {line}
+                                    </div>
+                                ))}
+                            </div>
+
+                            <form onSubmit={handleCommand} className="mt-2 flex items-center gap-2">
+                                <span className="text-emerald-500">{">"}</span>
+                                <input
+                                    ref={inputRef}
+                                    type="text"
+                                    value={input}
+                                    onChange={(e) => setInput(e.target.value)}
+                                    className="bg-transparent border-none outline-none text-emerald-500 w-full placeholder-zinc-800"
+                                    autoFocus
+                                />
+                                <motion.div
+                                    animate={{ opacity: [1, 0] }}
+                                    transition={{ duration: 0.8, repeat: Infinity }}
+                                    className="w-2 h-4 bg-emerald-500"
+                                />
+                            </form>
+                        </div>
+                    </Card>
+                ) : (
+                    <ContactForm />
+                )}
             </div>
         </section>
     );
