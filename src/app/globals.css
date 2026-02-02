@@ -4,11 +4,14 @@
   --font-sans: var(--font-inter), sans-serif;
   --font-mono: var(--font-roboto-mono), monospace;
 
-  --color-background: #050505;
+  /* Monochrome Palette */
+  --color-background: #0a0a0a;
+  /* Darker black */
   --color-foreground: #fafafa;
+  /* Off-white */
 
-  --color-primary: #10b981;
-  --color-primary-foreground: #ffffff;
+  --color-primary: #ffffff;
+  --color-primary-foreground: #000000;
 
   --color-secondary: #27272a;
   --color-secondary-foreground: #e4e4e7;
@@ -16,10 +19,11 @@
   --color-muted: #18181b;
   --color-muted-foreground: #a1a1aa;
 
-  --color-accent: #0d9488;
-  --color-accent-foreground: #ffffff;
+  --color-accent: #ffffff;
+  /* White accent */
+  --color-accent-foreground: #000000;
 
-  --color-border: #27272a;
+  --color-border: #3f3f46;
 
   --animate-marquee: marquee 25s linear infinite;
   --animate-marquee2: marquee2 25s linear infinite;

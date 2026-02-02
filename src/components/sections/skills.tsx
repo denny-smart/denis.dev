@@ -3,33 +3,25 @@
 import { cn } from "@/lib/utils";
 
 const skills = [
-    "Python", "Django", "FastAPI", "React", "Next.js", "TypeScript",
-    "PostgreSQL", "Docker", "Git", "CI/CD", "Automated Trading", "System Design",
-    "OWASP Top 10", "Ethical Hacking", "Secure Architecture", "REST APIs"
+    "Secure / Automated / Architected / Python / Django / FastAPI / PostgreSQL / Docker / OWASP /",
+    "Secure / Automated / Architected / Python / Django / FastAPI / PostgreSQL / Docker / OWASP /"
 ];
 
 export const Skills = () => {
     return (
-        <section className="border-y border-zinc-800 bg-zinc-950/50 py-10 overflow-hidden backdrop-blur-sm">
-            <div className="relative flex overflow-x-hidden">
-                <div className="animate-marquee flex whitespace-nowrap">
-                    {skills.map((skill, i) => (
-                        <span
-                            key={i}
-                            className="mx-8 text-xl font-bold uppercase tracking-widest text-zinc-500 transition-colors hover:text-emerald-500 cursor-default"
-                        >
-                            {skill}
+        <section className="py-20 overflow-hidden bg-black border-y border-white/5">
+            <div className="relative flex whitespace-nowrap overflow-hidden">
+                <div className="animate-marquee flex items-center">
+                    {skills.map((text, i) => (
+                        <span key={i} className="text-[6rem] leading-none font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-white/5 mx-4">
+                            {text}
                         </span>
                     ))}
                 </div>
-
-                <div className="absolute top-0 animate-marquee2 flex whitespace-nowrap">
-                    {skills.map((skill, i) => (
-                        <span
-                            key={`duplicate-${i}`}
-                            className="mx-8 text-xl font-bold uppercase tracking-widest text-zinc-500 transition-colors hover:text-emerald-500 cursor-default"
-                        >
-                            {skill}
+                <div className="absolute top-0 animate-marquee2 flex items-center">
+                    {skills.map((text, i) => (
+                        <span key={i} className="text-[6rem] leading-none font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-white/5 mx-4">
+                            {text}
                         </span>
                     ))}
                 </div>
