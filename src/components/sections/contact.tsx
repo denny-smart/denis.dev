@@ -1,33 +1,38 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Terminal as TerminalIcon } from "lucide-react";
+import { CircleDot, Printer, Type } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { ContactForm } from "@/components/contact-form";
 
-type LayoutProps = {
-    children: React.ReactNode;
-}
-
 const commands = {
-    help: "Available commands: help, email, socials, status, clear",
-    email: "ownerkirimi@gmail.com", // user can update this
+    help: "Try: help, email, socials, status, clear",
+    email: "ownerkirimi@gmail.com",
     socials: "GitHub: github.com/denny-smart | LinkedIn: linkedin.com/in/denis-kirimi",
-    status: "System Operational. All services running.",
+    status: "I'm here and ready to hear about your project, question, or idea.",
     clear: "CLEAR_ACTION",
 };
 
 export const ContactTerminal = () => {
+    const spring = { type: "spring" as const, stiffness: 100, damping: 15, mass: 0.8 };
     const [mode, setMode] = useState<"terminal" | "form">("terminal");
     const [input, setInput] = useState("");
     const [history, setHistory] = useState<string[]>([
-        "Welcome to the secure terminal interface.",
-        "Type 'help' to see available commands.",
+        "Welcome. I'm glad you're here.",
+        "Type 'help' to see a few simple ways to reach me.",
     ]);
     const inputRef = useRef<HTMLInputElement>(null);
+    const logRef = useRef<HTMLDivElement>(null);
 
-    const handleCommand = (e: React.FormEvent) => {
+    useEffect(() => {
+        logRef.current?.scrollTo({
+            top: logRef.current.scrollHeight,
+            behavior: "smooth",
+        });
+    }, [history]);
+
+    const handleCommand = (e: FormEvent) => {
         e.preventDefault();
         const cmd = input.trim().toLowerCase();
 
@@ -38,9 +43,9 @@ export const ContactTerminal = () => {
         if (response === "CLEAR_ACTION") {
             setHistory([]);
         } else if (response) {
-            setHistory(prev => [...prev, `> ${input}`, response]);
+            setHistory((prev) => [...prev, `print> ${input}`, response]);
         } else {
-            setHistory(prev => [...prev, `> ${input}`, `Command not found: ${cmd}`]);
+            setHistory((prev) => [...prev, `print> ${input}`, `I don't recognize '${cmd}' yet. Try 'help'.`]);
         }
 
         setInput("");
@@ -53,77 +58,98 @@ export const ContactTerminal = () => {
     };
 
     return (
-        <section className="py-24 px-4 flex justify-center" id="contact">
-            <div className="w-full max-w-3xl">
-                <div className="mb-8 text-center">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-emerald-500 mb-4">
-                        Initiate Handshake
-                    </h2>
-                    <p className="text-zinc-400 mb-6">
-                        Use the terminal below to establish communication protocol or switch to secure transmission.
+        <section className="scroll-mt-28 px-4 py-24 md:scroll-mt-32" id="contact">
+            <div className="mx-auto w-full max-w-5xl space-y-10">
+                <div className="space-y-4 text-center">
+                    <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[color:var(--foreground-muted)]">
+                        Contact
                     </p>
-                    <div className="flex justify-center gap-4 mb-8">
+                    <h2 className="text-4xl text-foreground sm:text-5xl">
+                        A warmer line of communication.
+                    </h2>
+                    <p className="mx-auto max-w-2xl text-lg leading-8 text-foreground/74">
+                        The terminal now feels closer to a desk object than a hacking prop: amber ink, forest-green glass, and responses that land with a little more printed weight.
+                    </p>
+                    <div className="flex justify-center gap-4 pt-2">
                         <button
                             onClick={() => setMode("terminal")}
-                            className={`px-4 py-2 rounded-full text-sm font-mono transition-colors ${mode === "terminal"
-                                ? "bg-emerald-500 text-black font-bold"
-                                : "bg-zinc-800 text-zinc-400 hover:text-white"
+                            className={`rounded-full border px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] transition-colors ${mode === "terminal"
+                                ? "border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.06)] text-foreground"
+                                : "border-[color:var(--stroke-subtle)] bg-transparent text-[color:var(--foreground-muted)] hover:text-foreground"
                                 }`}
                         >
-                            Terminal.exe
+                            Desk Terminal
                         </button>
                         <button
                             onClick={() => setMode("form")}
-                            className={`px-4 py-2 rounded-full text-sm font-mono transition-colors ${mode === "form"
-                                ? "bg-emerald-500 text-black font-bold"
-                                : "bg-zinc-800 text-zinc-400 hover:text-white"
+                            className={`rounded-full border px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] transition-colors ${mode === "form"
+                                ? "border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.06)] text-foreground"
+                                : "border-[color:var(--stroke-subtle)] bg-transparent text-[color:var(--foreground-muted)] hover:text-foreground"
                                 }`}
                         >
-                            Secure_Form.enc
+                            Written Note
                         </button>
                     </div>
                 </div>
 
                 {mode === "terminal" ? (
-                    <Card className="min-h-[400px] bg-black border-zinc-800 font-mono text-sm p-0 overflow-hidden shadow-2xl shadow-emerald-900/10">
-                        <div className="flex items-center gap-2 px-4 py-2 bg-zinc-900 border-b border-zinc-800">
-                            <TerminalIcon className="h-4 w-4 text-emerald-500" />
-                            <span className="text-zinc-400">guest@secure-arch:~</span>
-                            <div className="flex gap-1.5 ml-auto">
-                                <div className="w-3 h-3 rounded-full bg-red-500/20 text-red-500 flex items-center justify-center p-0.5" />
-                                <div className="w-3 h-3 rounded-full bg-yellow-500/20 text-yellow-500" />
-                                <div className="w-3 h-3 rounded-full bg-emerald-500/20 text-emerald-500" />
-                            </div>
-                        </div>
-
-                        <div
-                            className="p-6 h-[350px] overflow-y-auto cursor-text"
-                            onClick={focusInput}
-                        >
-                            <div className="space-y-2">
-                                {history.map((line, i) => (
-                                    <div key={i} className={line.startsWith(">") ? "text-zinc-500" : "text-emerald-500"}>
-                                        {line}
-                                    </div>
-                                ))}
+                    <Card
+                        noPadding
+                        className="overflow-hidden rounded-[2rem] border-[color:var(--stroke-subtle)] bg-[var(--terminal-bg)] font-mono text-sm text-[color:var(--terminal-text)] shadow-[0_24px_50px_rgba(7,12,9,0.28),inset_0_1px_0_rgba(255,236,204,0.08)]"
+                    >
+                        <div className="relative">
+                            <div className="pointer-events-none absolute inset-0 opacity-20 [background:repeating-linear-gradient(to_bottom,rgba(255,236,204,0.08)_0px,rgba(255,236,204,0.08)_1px,transparent_1px,transparent_4px)]" />
+                            <div className="flex items-center gap-3 border-b border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.04)] px-5 py-3">
+                                <Printer className="h-4 w-4 text-[color:var(--terminal-muted)]" />
+                                <span className="text-[0.72rem] uppercase tracking-[0.22em] text-[color:var(--terminal-muted)]">
+                                    Contact Notes
+                                </span>
+                                <div className="ml-auto flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.18em] text-[color:var(--terminal-muted)]">
+                                    <CircleDot className="h-3.5 w-3.5" />
+                                    online
+                                </div>
                             </div>
 
-                            <form onSubmit={handleCommand} className="mt-2 flex items-center gap-2">
-                                <span className="text-emerald-500">{">"}</span>
-                                <input
-                                    ref={inputRef}
-                                    type="text"
-                                    value={input}
-                                    onChange={(e) => setInput(e.target.value)}
-                                    className="bg-transparent border-none outline-none text-emerald-500 w-full placeholder-zinc-800"
-                                    autoFocus
-                                />
-                                <motion.div
-                                    animate={{ opacity: [1, 0] }}
-                                    transition={{ duration: 0.8, repeat: Infinity }}
-                                    className="w-2 h-4 bg-emerald-500"
-                                />
-                            </form>
+                            <div
+                                ref={logRef}
+                                className="relative h-[380px] cursor-text overflow-y-auto px-5 py-6"
+                                onClick={focusInput}
+                            >
+                                <div className="space-y-3">
+                                    {history.map((line, i) => (
+                                        <motion.div
+                                            key={`${i}-${line}`}
+                                            initial={{ opacity: 0, y: 8, filter: "blur(4px)", scaleY: 1.05 }}
+                                            animate={{ opacity: 1, y: 0, filter: "blur(0px)", scaleY: 1 }}
+                                            transition={spring}
+                                            className={line.startsWith("print>")
+                                                ? "text-[color:var(--terminal-muted)]"
+                                                : "text-[color:var(--terminal-text)] drop-shadow-[0_1px_0_rgba(250,231,194,0.12)]"}
+                                        >
+                                            {line}
+                                        </motion.div>
+                                    ))}
+                                </div>
+
+                                <form onSubmit={handleCommand} className="mt-5 flex items-center gap-3 border-t border-[color:var(--stroke-subtle)] pt-4">
+                                    <Type className="h-4 w-4 text-[color:var(--terminal-muted)]" />
+                                    <span className="text-[color:var(--terminal-muted)]">print&gt;</span>
+                                    <input
+                                        ref={inputRef}
+                                        type="text"
+                                        value={input}
+                                        onChange={(e) => setInput(e.target.value)}
+                                        className="w-full border-none bg-transparent text-[color:var(--terminal-text)] outline-none placeholder:text-[rgba(210,176,123,0.55)]"
+                                        placeholder="Try email, socials, or status"
+                                        autoFocus
+                                    />
+                                    <motion.div
+                                        animate={{ opacity: [1, 0.25, 1] }}
+                                        transition={{ duration: 1.2, repeat: Infinity }}
+                                        className="h-4 w-2 bg-[color:var(--terminal-text)]"
+                                    />
+                                </form>
+                            </div>
                         </div>
                     </Card>
                 ) : (

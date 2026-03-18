@@ -1,32 +1,33 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-inter), sans-serif;
-  --font-mono: var(--font-roboto-mono), monospace;
+  --font-sans: var(--font-manrope), sans-serif;
+  --font-heading: var(--font-newsreader), serif;
+  --font-mono: var(--font-ibm-plex-mono), monospace;
 
-  /* Monochrome Palette */
-  --color-background: #0a0a0a;
-  /* Darker black */
-  --color-foreground: #fafafa;
-  /* Off-white */
+  --color-background: #141b18;
+  --color-foreground: #f4eee3;
 
-  --color-primary: #ffffff;
-  --color-primary-foreground: #000000;
+  --color-primary: #f1e7d6;
+  --color-primary-foreground: #191713;
 
-  --color-secondary: #27272a;
-  --color-secondary-foreground: #e4e4e7;
+  --color-secondary: #24302b;
+  --color-secondary-foreground: #eee5d8;
 
-  --color-muted: #18181b;
-  --color-muted-foreground: #a1a1aa;
+  --color-muted: #1c2622;
+  --color-muted-foreground: #b6aea1;
 
-  --color-accent: #ffffff;
-  /* White accent */
-  --color-accent-foreground: #000000;
+  --color-accent: #c8734d;
+  --color-accent-foreground: #fff4ea;
 
-  --color-border: #3f3f46;
+  --color-border: #4a5851;
+  --color-card: #222d28;
+  --color-card-foreground: #f4eee3;
+  --color-highlight: #d5b16d;
+  --color-lilac: #b9adc9;
 
-  --animate-marquee: marquee 25s linear infinite;
-  --animate-marquee2: marquee2 25s linear infinite;
+  --animate-marquee: marquee 120s linear infinite;
+  --animate-marquee2: marquee2 120s linear infinite;
 
   @keyframes marquee {
     0% {
@@ -61,9 +62,58 @@
 
 /* Base Styles */
 @layer base {
+  :root {
+    color-scheme: dark;
+    --surface: #202a26;
+    --surface-soft: #28342f;
+    --surface-muted: #34423c;
+    --surface-strong: #161e1b;
+    --foreground-muted: #b6aea1;
+    --foreground-subtle: #d8d1c6;
+    --accent-primary: #c8734d;
+    --accent-secondary: #d5b16d;
+    --stroke-subtle: rgb(244 238 227 / 10%);
+    --shadow-hard: #0d1210;
+    --terminal-bg: #15211c;
+    --terminal-text: #f2d6a1;
+    --terminal-muted: #d2b07b;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    background-color: var(--color-background);
     color: var(--color-foreground);
+    background:
+      radial-gradient(circle at 14% 18%, rgb(200 115 77 / 18%), transparent 24%),
+      radial-gradient(circle at 86% 14%, rgb(185 173 201 / 14%), transparent 20%),
+      radial-gradient(circle at 50% 100%, rgb(213 177 109 / 10%), transparent 28%),
+      linear-gradient(180deg, #18211d 0%, #141b18 48%, #101614 100%);
+    font-feature-settings: "liga" 1, "kern" 1, "ss01" 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.16;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='%23fff7ee' fill-opacity='0.55'%3E%3Ccircle cx='24' cy='30' r='1.1'/%3E%3Ccircle cx='84' cy='58' r='0.9'/%3E%3Ccircle cx='130' cy='22' r='0.85'/%3E%3Ccircle cx='36' cy='120' r='0.9'/%3E%3Ccircle cx='128' cy='112' r='1.15'/%3E%3Ccircle cx='154' cy='152' r='0.9'/%3E%3C/g%3E%3C/svg%3E");
+    mix-blend-mode: soft-light;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-newsreader), serif;
+    letter-spacing: -0.035em;
+    font-weight: 600;
   }
 }
 
@@ -73,14 +123,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #09090b;
+  background: #121916;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #27272a;
+  background: #46534d;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: #617068;
 }

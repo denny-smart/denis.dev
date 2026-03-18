@@ -1,46 +1,58 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, Terminal, Server, Cpu } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { Cpu, Server, Shield, Terminal } from "lucide-react";
 
 const expertiseData = [
     {
-        title: "Secure Web Systems",
+        title: "Secure Web Development",
         icon: Shield,
-        description: "Designing and implementing web applications with valid authentication, authorization, and data protection. Focus on OWASP Top 10 mitigation and secure API design.",
-        tags: ["OWASP", "FastAPI", "AuthZ/N"]
+        description: "I build secure web applications with strong authentication, clear authorization, data protection, and safe API design based on OWASP best practices.",
+        tags: ["OWASP", "FastAPI", "Secure APIs"]
     },
     {
-        title: "Automated Trading & Financial Systems",
+        title: "Automated Trading Systems",
         icon: Terminal,
-        description: "Development of algorithmic trading bots and financial analysis tools with real-world strategy implementation and strict risk management logic.",
-        tags: ["Algo Trading", "Risk Mgmt", "Low Latency"]
+        description: "I develop automated trading systems and financial tools with clear strategy logic, market analysis, and practical risk management.",
+        tags: ["Algo Trading", "Risk Management", "Financial Tools"]
     },
     {
         title: "Backend Architecture",
         icon: Server,
-        description: "Building scalable backends that handle heavy loads. Leveraging Python (Django/FastAPI), PostgreSQL, and asynchronous processing for high performance.",
-        tags: ["System Design", "Microservices", "PostgreSQL"]
+        description: "I design scalable backend systems with Python, Django, FastAPI, PostgreSQL, and async workflows that support performance, reliability, and growth.",
+        tags: ["System Design", "Scalable APIs", "PostgreSQL"]
     },
     {
-        title: "Security Awareness",
+        title: "Cybersecurity Practices",
         icon: Cpu,
-        description: "Applying offensive security knowledge to build better defenses. Vulnerability assessment, threat modeling, and defensive coding practices.",
-        tags: ["Ethical Hacking", "Threat Modeling", "Defense"]
+        description: "I use cybersecurity principles such as threat modeling, vulnerability assessment, and defensive coding to help teams build safer products.",
+        tags: ["Cybersecurity", "Threat Modeling", "Defensive Coding"]
     }
 ];
 
 export const Expertise = () => {
+    const spring = { type: "spring" as const, stiffness: 100, damping: 15, mass: 0.8 };
+    const surfaces = [
+        "bg-[var(--surface)]",
+        "bg-[var(--surface-soft)]",
+        "bg-[var(--surface-muted)]",
+        "bg-[rgb(37_48_43)]"
+    ];
+
     return (
-        <section className="relative z-10 bg-zinc-950/85 px-4 pb-24 pt-12 md:pb-24 md:pt-16" id="expertise">
-            <div className="mx-auto max-w-6xl space-y-6 md:space-y-8">
-                <div className="space-y-3 text-center">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-zinc-100">
-                        Core Expertise
-                    </h2>
-                    <p className="text-lg text-zinc-300 max-w-2xl mx-auto">
-                        Delivering production-grade solutions with a focus on security, reliability, and scale.
+        <section className="relative z-10 scroll-mt-28 px-4 pb-24 pt-16 md:scroll-mt-32 md:pt-20" id="expertise">
+            <div className="mx-auto max-w-6xl space-y-10 md:space-y-14">
+                <div className="grid gap-6 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:items-end">
+                    <div className="space-y-4">
+                        <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[color:var(--foreground-muted)]">
+                            Expertise
+                        </p>
+                        <h2 className="text-4xl text-foreground sm:text-5xl">
+                            Core skills for secure, scalable digital products.
+                        </h2>
+                    </div>
+                    <p className="max-w-2xl text-lg leading-8 text-foreground/74 md:justify-self-end">
+                        I focus on secure web development, backend architecture, automated trading systems, and practical cybersecurity for modern businesses.
                     </p>
                 </div>
 
@@ -50,29 +62,32 @@ export const Expertise = () => {
                             key={i}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.1 }}
+                            transition={{ ...spring, delay: i * 0.08 }}
                             viewport={{ once: true }}
                         >
-                            <Card className="group h-full border-white/10 bg-black/75 p-6 shadow-[0_24px_70px_rgba(0,0,0,0.4)] transition-colors hover:border-emerald-500/50">
-                                <div className="space-y-4">
-                                    <div className="inline-flex rounded-lg bg-emerald-500/12 p-3 text-emerald-400 transition-colors group-hover:text-emerald-300">
+                            <article className={`h-full rounded-[1.85rem] border border-[color:var(--stroke-subtle)] ${surfaces[i % surfaces.length]} p-7 shadow-[10px_10px_0_var(--shadow-hard)]`}>
+                                <div className="space-y-6">
+                                    <div className="inline-flex rounded-[1rem] border border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.045)] p-3 text-[color:var(--accent-primary)]">
                                         <item.icon className="h-6 w-6" />
                                     </div>
-                                    <h3 className="text-xl font-bold text-white drop-shadow-[0_0_18px_rgba(255,255,255,0.12)]">
+                                    <h3 className="text-2xl text-foreground">
                                         {item.title}
                                     </h3>
-                                    <p className="leading-relaxed text-zinc-200">
+                                    <p className="max-w-xl leading-8 text-foreground/78">
                                         {item.description}
                                     </p>
-                                    <div className="flex flex-wrap gap-2 pt-2">
+                                    <div className="flex flex-wrap gap-2 pt-1">
                                         {item.tags.map((tag) => (
-                                            <span key={tag} className="rounded border border-white/10 bg-zinc-800/90 px-2 py-1 text-xs font-mono text-zinc-200">
+                                            <span
+                                                key={tag}
+                                                className="rounded-full border border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.05)] px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--foreground-subtle)]"
+                                            >
                                                 {tag}
                                             </span>
                                         ))}
                                     </div>
                                 </div>
-                            </Card>
+                            </article>
                         </motion.div>
                     ))}
                 </div>

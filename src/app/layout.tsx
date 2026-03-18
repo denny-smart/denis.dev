@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, Roboto_Mono } from "next/font/google"; // Import Roboto_Mono
+import { IBM_Plex_Mono, Manrope, Newsreader } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-// Initialize Roboto Mono
-const robotoMono = Roboto_Mono({
+const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" });
+const newsreader = Newsreader({
   subsets: ["latin"],
-  variable: "--font-roboto-mono"
+  variable: "--font-newsreader",
+});
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-ibm-plex-mono",
 });
 
 export const metadata: Metadata = {
@@ -22,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <Script id="scroll-to-top-on-load" strategy="beforeInteractive">
           {`
@@ -33,11 +37,15 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={cn(
-        inter.variable,
-        robotoMono.variable, // Add mono variable
+      <body
+        suppressHydrationWarning
+        className={cn(
+        manrope.variable,
+        newsreader.variable,
+        ibmPlexMono.variable,
         "min-h-screen bg-background font-sans antialiased text-foreground selection:bg-accent selection:text-accent-foreground"
-      )}>
+      )}
+      >
         {children}
       </body>
     </html>

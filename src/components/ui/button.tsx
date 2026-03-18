@@ -18,10 +18,10 @@ export const Button = ({
     ...props
 }: ButtonProps) => {
     const variants = {
-        primary: "bg-white text-black hover:bg-zinc-200",
-        secondary: "bg-zinc-800 text-white hover:bg-zinc-700",
-        outline: "border border-zinc-700 text-zinc-300 hover:border-white hover:text-white",
-        ghost: "text-zinc-400 hover:text-white hover:bg-white/10",
+        primary: "border border-accent/20 bg-accent text-accent-foreground shadow-[0_18px_36px_rgba(200,115,77,0.26)] hover:bg-[#d27f59]",
+        secondary: "border border-white/10 bg-white/[0.06] text-foreground hover:bg-white/[0.1]",
+        outline: "border border-white/12 bg-white/[0.03] text-foreground hover:border-accent/40 hover:bg-white/[0.08]",
+        ghost: "text-muted-foreground hover:bg-white/[0.06] hover:text-foreground",
     };
 
     const sizes = {
@@ -33,10 +33,11 @@ export const Button = ({
 
     return (
         <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={{ y: -2, scale: 1.01 }}
+            whileTap={{ scale: 0.985 }}
+            transition={{ type: "spring", stiffness: 100, damping: 15, mass: 0.8 }}
             className={cn(
-                "inline-flex items-center justify-center rounded-lg text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black",
+                "inline-flex items-center justify-center rounded-full text-sm font-semibold transition-[background-color,border-color,color,transform,box-shadow] focus:outline-none focus:ring-2 focus:ring-accent/40 focus:ring-offset-2 focus:ring-offset-background",
                 variants[variant],
                 sizes[size],
                 className

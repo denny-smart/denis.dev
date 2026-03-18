@@ -3,30 +3,32 @@
 import { motion } from "framer-motion";
 
 const stats = [
-    { label: "Systems Secured", value: "50+" },
-    { label: "Uptime Maintained", value: "99.9%" },
-    { label: "Vulnerabilities Patched", value: "200+" },
-    { label: "Automation Modules", value: "15+" },
+    { label: "Years Building", value: "5+" },
+    { label: "Production Systems", value: "10+" },
+    { label: "Workflows Automated", value: "20+" },
+    { label: "Reliability Focus", value: "24/7" },
 ];
 
 export const Stats = () => {
+    const spring = { type: "spring" as const, stiffness: 100, damping: 15, mass: 0.8 };
+
     return (
-        <section className="relative z-10 px-4 py-24">
+        <section className="relative z-10 px-4 py-20 md:py-24">
             <div className="mx-auto max-w-6xl">
-                <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+                <div className="grid grid-cols-2 gap-5 md:grid-cols-4">
                     {stats.map((stat, i) => (
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.1, duration: 0.5 }}
+                            transition={{ ...spring, delay: i * 0.08 }}
                             viewport={{ once: true }}
-                            className="rounded-2xl border border-white/10 bg-black/55 px-5 py-6 text-center shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-sm"
+                            className="rounded-[1.7rem] border border-[color:var(--stroke-subtle)] bg-[var(--surface-soft)] px-5 py-6 text-center shadow-[8px_8px_0_var(--shadow-hard)]"
                         >
-                            <h3 className="text-4xl font-bold tracking-tighter text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.18)] sm:text-5xl">
+                            <h3 className="text-4xl text-foreground sm:text-5xl">
                                 {stat.value}
                             </h3>
-                            <p className="mt-3 text-sm font-medium uppercase tracking-[0.24em] text-zinc-300">
+                            <p className="mt-3 text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-[color:var(--foreground-muted)]">
                                 {stat.label}
                             </p>
                         </motion.div>
