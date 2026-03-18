@@ -3,29 +3,23 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const projects = [
     {
-        title: "Algorithmic Trading Bot",
-        category: "Automation / Finance",
-        description: "A high-frequency trading system built with Python and FastAPI, featuring real-time risk management and multi-exchange connectivity.",
-        image: "https://images.unsplash.com/photo-1642543492481-44e81e3914a7?q=80&w=2670&auto=format&fit=crop", // Abstract Tech Image
-        link: "#"
+        title: "MaliBot",
+        category: "Live Product",
+        description: "A deployed project experience showcasing MaliBot in action, with a polished interface and real product flow.",
+        image: "/MaliBot.JPG",
+        link: "https://malibot.vercel.app/",
+        cta: "Visit Site"
     },
     {
-        title: "Secure Banking API",
-        category: "Security / Backend",
-        description: "Zero-trust architecture implementation for a fintech core, utilizing mTLS, OAuth2, and rigorous input validation.",
-        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop", // Cybersecurity Image
-        link: "#"
-    },
-    {
-        title: "Vulnerability Scanner",
-        category: "Offensive Security",
-        description: "Automated reconnaissance tool that identifies common OWASP vulnerabilities in web applications before deployment.",
-        image: "https://images.unsplash.com/photo-1558494949-ef2bb6db8744?q=80&w=2670&auto=format&fit=crop", // Code/Matrix Image
-        link: "#"
+        title: "GitHub Portfolio",
+        category: "Open Source",
+        description: "A collection of repositories, experiments, and production-oriented code that reflects your engineering and security work.",
+        image: "/github.JPG",
+        link: "https://github.com/denny-smart",
+        cta: "View GitHub"
     }
 ];
 
@@ -74,12 +68,17 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
                         </p>
                     </div>
 
-                    <Button
-                        size="icon"
-                        className="h-16 w-16 rounded-full bg-white text-black hover:bg-zinc-200 hover:scale-105 transition-all"
+                    <motion.a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="inline-flex h-16 items-center gap-3 rounded-full bg-white px-6 text-sm font-semibold uppercase tracking-[0.2em] text-black transition-colors hover:bg-zinc-200"
                     >
-                        <ArrowUpRight className="h-8 w-8" />
-                    </Button>
+                        <span>{project.cta}</span>
+                        <ArrowUpRight className="h-5 w-5" />
+                    </motion.a>
                 </div>
             </div>
         </motion.div>

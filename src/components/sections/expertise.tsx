@@ -33,13 +33,13 @@ const expertiseData = [
 
 export const Expertise = () => {
     return (
-        <section className="-mt-6 bg-zinc-950 px-4 pb-24 pt-0 md:-mt-8 md:pb-24 md:pt-0" id="expertise">
+        <section className="relative z-10 bg-zinc-950/85 px-4 pb-24 pt-12 md:pb-24 md:pt-16" id="expertise">
             <div className="mx-auto max-w-6xl space-y-6 md:space-y-8">
                 <div className="space-y-3 text-center">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-zinc-100">
                         Core Expertise
                     </h2>
-                    <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
+                    <p className="text-lg text-zinc-300 max-w-2xl mx-auto">
                         Delivering production-grade solutions with a focus on security, reliability, and scale.
                     </p>
                 </div>
@@ -53,18 +53,20 @@ export const Expertise = () => {
                             transition={{ delay: i * 0.1 }}
                             viewport={{ once: true }}
                         >
-                            <Card className="h-full p-6 bg-zinc-900/50 border-zinc-800 hover:border-emerald-500/50 transition-colors group">
+                            <Card className="group h-full border-white/10 bg-black/75 p-6 shadow-[0_24px_70px_rgba(0,0,0,0.4)] transition-colors hover:border-emerald-500/50">
                                 <div className="space-y-4">
-                                    <div className="inline-flex p-3 rounded-lg bg-emerald-500/10 text-emerald-500 group-hover:text-emerald-400 transition-colors">
+                                    <div className="inline-flex rounded-lg bg-emerald-500/12 p-3 text-emerald-400 transition-colors group-hover:text-emerald-300">
                                         <item.icon className="h-6 w-6" />
                                     </div>
-                                    <h3 className="text-xl font-bold text-zinc-100">{item.title}</h3>
-                                    <p className="text-zinc-400 leading-relaxed">
+                                    <h3 className="text-xl font-bold text-white drop-shadow-[0_0_18px_rgba(255,255,255,0.12)]">
+                                        {item.title}
+                                    </h3>
+                                    <p className="leading-relaxed text-zinc-200">
                                         {item.description}
                                     </p>
                                     <div className="flex flex-wrap gap-2 pt-2">
                                         {item.tags.map((tag) => (
-                                            <span key={tag} className="text-xs font-mono px-2 py-1 rounded bg-zinc-800 text-zinc-400 border border-zinc-700">
+                                            <span key={tag} className="rounded border border-white/10 bg-zinc-800/90 px-2 py-1 text-xs font-mono text-zinc-200">
                                                 {tag}
                                             </span>
                                         ))}
