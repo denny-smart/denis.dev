@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Roboto_Mono } from "next/font/google"; // Import Roboto_Mono
+import Script from "next/script";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
@@ -22,6 +23,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script id="scroll-to-top-on-load" strategy="beforeInteractive">
+          {`
+            if ("scrollRestoration" in history) {
+              history.scrollRestoration = "manual";
+            }
+            window.scrollTo(0, 0);
+          `}
+        </Script>
+      </head>
       <body className={cn(
         inter.variable,
         robotoMono.variable, // Add mono variable
