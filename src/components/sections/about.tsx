@@ -12,13 +12,13 @@ const principles = [
 
 export const About = () => {
     return (
-        <section className="-mt-12 bg-zinc-950/30 px-4 pb-12 pt-2 md:-mt-16 md:pb-14 md:pt-2" id="about">
+        <section className="relative z-10 bg-zinc-950/70 px-4 pb-16 pt-12 md:pb-16 md:pt-16" id="about">
             <div className="mx-auto max-w-4xl space-y-6">
                 <div className="space-y-3 text-center">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-zinc-100">
                         About Me
                     </h2>
-                    <p className="text-lg text-zinc-400 leading-relaxed max-w-2xl mx-auto">
+                    <p className="mx-auto max-w-2xl text-lg leading-relaxed text-zinc-200">
                         I build secure, reliable digital products. My work focuses on backend systems, automation, and security,
                         with a simple goal: create tools that work well and protect people.
                     </p>
@@ -32,10 +32,10 @@ export const About = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ delay: i * 0.1 }}
                             viewport={{ once: true }}
-                            className="flex items-start gap-4 rounded-xl border border-zinc-800/50 bg-zinc-900/50 p-5"
+                            className="flex items-start gap-4 rounded-xl border border-white/10 bg-black/65 p-5 shadow-[0_18px_50px_rgba(0,0,0,0.28)]"
                         >
-                            <CheckCircle2 className="h-6 w-6 text-emerald-500 shrink-0" />
-                            <p className="text-zinc-300 leading-7">{principle}</p>
+                            <CheckCircle2 className="h-6 w-6 shrink-0 text-emerald-400" />
+                            <p className="leading-7 text-zinc-100">{principle}</p>
                         </motion.div>
                     ))}
                 </div>

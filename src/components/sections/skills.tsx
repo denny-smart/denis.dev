@@ -1,7 +1,5 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-
 const skills = [
     "Secure / Automated / Architected / Python / Django / FastAPI / PostgreSQL / Docker / OWASP /",
     "Secure / Automated / Architected / Python / Django / FastAPI / PostgreSQL / Docker / OWASP /"
