@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { Modal } from "@/components/ui/modal";
 import { ContactForm } from "@/components/contact-form";
 
@@ -22,7 +21,7 @@ export const Navbar = () => {
             <motion.nav
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
-                className="fixed left-0 right-0 top-0 z-50 border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-md"
+                className="fixed left-0 right-0 top-0 z-50 border-b border-zinc-800 bg-zinc-950/92 backdrop-blur-md"
             >
                 <div className="flex w-full items-center justify-between px-6 py-4 max-w-7xl mx-auto">
                     <Link href="/" className="font-mono text-lg font-bold tracking-tighter text-emerald-500">
@@ -34,7 +33,7 @@ export const Navbar = () => {
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="text-sm font-medium text-zinc-400 transition-colors hover:text-emerald-400"
+                                className="text-sm font-medium text-zinc-300 transition-colors hover:text-emerald-400"
                             >
                                 {link.name}
                             </Link>
@@ -45,7 +44,7 @@ export const Navbar = () => {
                         onClick={() => setIsModalOpen(true)}
                         className="hidden rounded-full bg-zinc-100 px-4 py-1.5 text-sm font-semibold text-zinc-950 transition-transform hover:scale-105 active:scale-95 md:inline-block"
                     >
-                        Let's Talk
+                        Let&apos;s Talk
                     </button>
                     <button className="md:hidden text-zinc-400">
                         {/* Mobile burger icon placeholder */}

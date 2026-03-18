@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 const projects = [
@@ -89,8 +88,8 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
 
 export const Projects = () => {
     return (
-        <section className="py-32 px-4 bg-black" id="projects">
-            <div className="mx-auto max-w-6xl space-y-24">
+        <section className="bg-black px-4 pb-0 pt-24 md:pt-28" id="projects">
+            <div className="mx-auto max-w-6xl space-y-20">
                 <div className="space-y-4">
                     <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white">
                         Selected Works
@@ -98,7 +97,7 @@ export const Projects = () => {
                     <div className="h-1 w-20 bg-emerald-500" />
                 </div>
 
-                <div className="space-y-12">
+                <div className="space-y-10">
                     {projects.map((project, index) => (
                         <ProjectCard key={index} project={project} index={index} />
                     ))}
