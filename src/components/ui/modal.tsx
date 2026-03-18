@@ -43,7 +43,7 @@ export const Modal = ({ isOpen, onClose, children, title }: ModalProps) => {
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
                             transition={{ type: "spring", duration: 0.5 }}
-                            className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto"
+                            className="relative w-full max-w-xl max-h-[90vh] overflow-y-auto"
                             onClick={(e) => e.stopPropagation()}
                         >
                             {title && (
@@ -62,7 +62,8 @@ export const Modal = ({ isOpen, onClose, children, title }: ModalProps) => {
                             {!title && (
                                 <button
                                     onClick={onClose}
-                                    className="absolute top-4 right-4 p-2 rounded-full hover:bg-zinc-800 transition-colors z-10"
+                                    aria-label="Close contact form"
+                                    className="absolute top-4 right-4 p-2 rounded-full bg-zinc-950/80 hover:bg-zinc-800 transition-colors z-10"
                                 >
                                     <X className="w-5 h-5 text-zinc-400" />
                                 </button>

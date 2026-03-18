@@ -33,9 +33,9 @@ const expertiseData = [
 
 export const Expertise = () => {
     return (
-        <section className="py-24 px-4 bg-zinc-950" id="expertise">
-            <div className="mx-auto max-w-6xl space-y-16">
-                <div className="space-y-4 text-center">
+        <section className="-mt-6 bg-zinc-950 px-4 pb-24 pt-0 md:-mt-8 md:pb-24 md:pt-0" id="expertise">
+            <div className="mx-auto max-w-6xl space-y-6 md:space-y-8">
+                <div className="space-y-3 text-center">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-zinc-100">
                         Core Expertise
                     </h2>
