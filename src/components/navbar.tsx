@@ -7,14 +7,23 @@ import { Modal } from "@/components/ui/modal";
 import { ContactForm } from "@/components/contact-form";
 
 const links = [
-    { name: "Work", href: "#work" },
+    { name: "Projects", href: "#projects" },
     { name: "About", href: "#about" },
-    { name: "Notes", href: "#notes" },
+    { name: "Expertise", href: "#expertise" },
     { name: "Contact", href: "#contact" },
 ];
 
 export const Navbar = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const scrollHeroIntoView = () => {
+        window.setTimeout(() => {
+            document.getElementById("hero")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 260);
+    };
+    const closeModalToHero = () => {
+        setIsModalOpen(false);
+        scrollHeroIntoView();
+    };
 
     return (
         <>
@@ -53,7 +62,11 @@ export const Navbar = () => {
                 </div>
             </motion.nav>
 
-            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+            <Modal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                onBackdropClick={closeModalToHero}
+            >
                 <ContactForm onSuccess={() => setIsModalOpen(false)} />
             </Modal>
         </>

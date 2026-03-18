@@ -5,7 +5,7 @@ export async function sendTelegramMessage(formData: FormData) {
     const request = formData.get("request");
 
     if (!email || !request) {
-        return { success: false, message: "Email and Request are required" };
+        return { success: false, message: "Email and message are required." };
     }
 
     const token = process.env.TELEGRAM_BOT_TOKEN;
@@ -13,14 +13,16 @@ export async function sendTelegramMessage(formData: FormData) {
 
     if (!token || !chatId) {
         console.error("Telegram credentials not missing");
-        return { success: false, message: "Server configuration error" };
+        return { success: false, message: "Server configuration error." };
     }
 
     const text = `
-🚀 *New Secure Transmission*
+New note from the studio
 
-📧 *Email:* \`${email}\`
-📝 *Request:*
+Email:
+${email}
+
+Message:
 ${request}
     `.trim();
 
@@ -32,8 +34,7 @@ ${request}
             },
             body: JSON.stringify({
                 chat_id: chatId,
-                text: text,
-                parse_mode: "Markdown",
+                text,
             }),
         });
 
@@ -41,12 +42,12 @@ ${request}
 
         if (!data.ok) {
             console.error("Telegram API Error:", data);
-            return { success: false, message: "Failed to send message" };
+            return { success: false, message: "Could not send your message." };
         }
 
-        return { success: true, message: "Transmission Successful" };
+        return { success: true, message: "Message sent." };
     } catch (error) {
         console.error("Error sending Telegram message:", error);
-        return { success: false, message: "System Error" };
+        return { success: false, message: "Something went wrong. Please try again." };
     }
 }

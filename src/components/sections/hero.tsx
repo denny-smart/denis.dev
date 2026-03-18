@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Shield } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Modal } from "@/components/ui/modal";
@@ -10,115 +10,188 @@ import { ContactForm } from "@/components/contact-form";
 
 export const Hero = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const spring = { type: "spring" as const, stiffness: 100, damping: 15, mass: 0.85 };
+    const floatEase = [0.37, 0, 0.18, 1] as const;
+    const scrollHeroIntoView = () => {
+        window.setTimeout(() => {
+            document.getElementById("hero")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 260);
+    };
+    const closeModalToHero = () => {
+        setIsModalOpen(false);
+        scrollHeroIntoView();
+    };
 
     return (
-        <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pb-24 pt-32 md:pt-36 text-center">
+        <section className="relative flex min-h-screen items-center overflow-hidden px-4 pb-20 pt-28 md:px-8 md:pb-24 md:pt-32" id="hero">
+            <div className="pointer-events-none absolute left-[4%] top-[14%] h-56 w-56 rounded-full bg-accent/10 blur-3xl" />
+            <div className="pointer-events-none absolute bottom-[10%] right-[4%] h-72 w-72 rounded-full bg-[rgb(185_173_201_/_0.12)] blur-3xl" />
 
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_38%),linear-gradient(to_bottom,rgba(0,0,0,0.12),rgba(0,0,0,0.45))]" />
-
-            {/* Geometric Grid Background is handled in page.tsx layout, ensuring visibility */}
-
-            <div className="z-10 w-full max-w-5xl relative">
-
-                {/* Floating Cards - Decorative */}
-                {/* Card 1: Top Left */}
+            <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:items-end">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: [0, -15, 0] }}
-                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-                    className="absolute left-4 top-0 hidden lg:block w-64 xl:-left-2"
-                >
-                    <Card className="border border-white/15 bg-black/70 p-4 shadow-2xl backdrop-blur-md">
-                        <div className="flex items-center gap-3">
-                            <div className="rounded-full bg-white/12 p-2">
-                                <Shield className="h-5 w-5 text-white" />
-                            </div>
-                            <div className="text-left">
-                                <p className="text-xs font-mono text-zinc-300">System Status</p>
-                                <p className="text-sm font-bold text-white">SECURE</p>
-                            </div>
-                        </div>
-                    </Card>
-                </motion.div>
-
-                {/* Card 2: Bottom Right */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: [0, -20, 0] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                    className="absolute bottom-2 right-4 hidden lg:block w-72 xl:-right-2"
-                >
-                    <Card className="border border-white/15 bg-black/70 p-4 shadow-2xl backdrop-blur-md">
-                        <div className="flex items-center justify-between mb-2">
-                            <span className="text-xs font-mono text-zinc-300">ACTIVITY_LOG</span>
-                            <div className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
-                        </div>
-                        <div className="h-1.5 w-full overflow-hidden rounded-full bg-zinc-800">
-                            <motion.div
-                                className="h-full bg-emerald-400"
-                                animate={{ width: ["0%", "40%", "70%", "100%"] }}
-                                transition={{ duration: 3, repeat: Infinity }}
-                            />
-                        </div>
-                    </Card>
-                </motion.div>
-
-                {/* Main Content */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 32 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="space-y-8"
+                    transition={spring}
+                    className="space-y-10 text-center lg:text-left"
                 >
-                    {/* Badge */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.2 }}
-                        className="inline-flex items-center rounded-full border border-white/15 bg-black/55 px-4 py-1.5 backdrop-blur-sm"
+                        initial={{ opacity: 0, y: 18 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ ...spring, delay: 0.08 }}
+                        className="inline-flex items-center gap-3 rounded-full border border-white/12 bg-white/[0.045] px-4 py-2 shadow-[inset_0_1px_0_rgba(255,244,234,0.12)] backdrop-blur-md"
                     >
-                        <span className="text-sm font-medium text-zinc-100">Denis | System Architect</span>
+                        <span className="h-2 w-2 rounded-full bg-accent" />
+                        <span className="text-xs font-semibold uppercase tracking-[0.22em] text-foreground/80">
+                            Denis Kirimi / Systems Architect
+                        </span>
                     </motion.div>
 
-                    {/* Headline */}
-                    <h1 className="mx-auto max-w-5xl text-5xl font-extrabold tracking-tight text-white leading-[1.05] sm:text-7xl md:text-8xl">
-                        Building <span className="text-emerald-400">systems</span> that <br className="hidden sm:block" />
-                        support real <br className="hidden sm:block" />
-                        <span className="text-white">business needs.</span>
-                    </h1>
+                    <div className="space-y-6">
+                        <p className="mx-auto max-w-xl text-sm uppercase tracking-[0.26em] text-muted-foreground lg:mx-0">
+                            I design digital systems that feel clear to use, strong under pressure, and ready for real-world growth.
+                        </p>
 
-                    {/* Description */}
-                    <p className="mx-auto max-w-2xl text-lg leading-relaxed text-zinc-300 md:text-xl">
-                        Designing resilient automated architectures and offensive-grade security solutions for modern financial infrastructure.
-                    </p>
+                        <h1 className="mx-auto max-w-[11ch] font-heading text-[clamp(4rem,10vw,8rem)] leading-[0.92] tracking-[-0.06em] text-foreground lg:mx-0">
+                            Building{" "}
+                            <span className="relative inline-flex px-2 text-accent">
+                                <span className="absolute inset-x-1 bottom-2 h-4 rounded-full bg-accent/15 blur-md" />
+                                <span className="relative">systems</span>
+                            </span>{" "}
+                            for real business growth.
+                        </h1>
 
-                    {/* CTA Buttons */}
+                        <p className="mx-auto max-w-2xl text-lg leading-relaxed text-foreground/76 md:text-xl lg:mx-0">
+                            I build backend platforms, automation, and system-focused workflows that help teams move faster, reduce risk, and scale with confidence.
+                        </p>
+                    </div>
+
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 18 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4 }}
-                        className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+                        transition={{ ...spring, delay: 0.18 }}
+                        className="flex flex-col items-center gap-4 pt-2 sm:flex-row lg:items-start lg:justify-start"
                     >
-                        <a
+                        <motion.a
                             href="https://github.com/denny-smart"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="h-14 px-8 rounded-full bg-white text-black hover:bg-zinc-200 text-lg font-medium transition-transform active:scale-95 inline-flex items-center justify-center"
+                            whileHover={{ y: -2 }}
+                            whileTap={{ scale: 0.985 }}
+                            transition={spring}
+                            className="inline-flex h-14 items-center gap-2 rounded-full border border-[#f3e8d4]/20 bg-primary px-7 text-base font-semibold text-primary-foreground shadow-[0_18px_38px_rgba(15,18,16,0.18)]"
                         >
-                            View Projects
-                        </a>
+                            <span>View Projects</span>
+                            <ArrowUpRight className="h-4 w-4" />
+                        </motion.a>
                         <Button
                             variant="outline"
                             onClick={() => setIsModalOpen(true)}
-                            className="h-14 rounded-full border-white/40 px-8 text-lg font-medium text-white hover:bg-white/10 transition-transform active:scale-95"
+                            className="h-14 px-7 text-base"
                         >
                             Contact Me
                         </Button>
                     </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ ...spring, delay: 0.28 }}
+                        className="grid gap-3 pt-2 sm:grid-cols-3"
+                    >
+                        {[
+                            "Clear architecture for growing products.",
+                            "Automation that saves time without adding fragility.",
+                            "Systems that support product momentum.",
+                        ].map((item) => (
+                            <div
+                                key={item}
+                                className="rounded-[1.4rem] border border-white/10 bg-white/[0.035] px-4 py-4 text-sm leading-relaxed text-foreground/72 shadow-[inset_0_1px_0_rgba(255,244,234,0.08)] backdrop-blur-sm"
+                            >
+                                {item}
+                            </div>
+                        ))}
+                    </motion.div>
                 </motion.div>
+
+                <div className="relative mx-auto flex w-full max-w-[420px] flex-col gap-5 lg:mx-0 lg:pb-8">
+                    <motion.div
+                        initial={{ opacity: 0, x: 18, y: 26 }}
+                        animate={{ opacity: 1, x: 0, y: [0, -14, 0], rotate: [-1.2, 0.3, -1.2] }}
+                        transition={{
+                            opacity: { ...spring, delay: 0.2 },
+                            x: { ...spring, delay: 0.2 },
+                            y: { duration: 8.5, repeat: Infinity, ease: floatEase },
+                            rotate: { duration: 8.5, repeat: Infinity, ease: floatEase },
+                        }}
+                        className="lg:-ml-10"
+                    >
+                        <Card className="rounded-[2.2rem_1.4rem_2.45rem_1.65rem]">
+                            <div className="space-y-5 text-left">
+                                <div className="flex items-center gap-3">
+                                    <div className="rounded-[1.2rem] bg-accent/14 p-3 text-accent">
+                                        <ShieldCheck className="h-5 w-5" />
+                                    </div>
+                                    <div>
+                                        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+                                            Current Focus
+                                        </p>
+                                        <p className="text-lg font-semibold text-foreground">Secure, scalable delivery</p>
+                                    </div>
+                                </div>
+                                <p className="text-base leading-relaxed text-foreground/74">
+                                    Turning complex architecture into systems and workflows teams can run, maintain, and improve with confidence.
+                                </p>
+                                <div className="flex flex-wrap gap-2">
+                                    {["Backend platforms", "Automation workflows", "Systems strategy"].map((tag) => (
+                                        <span
+                                            key={tag}
+                                            className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-foreground/72"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        </Card>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, x: 22, y: 24 }}
+                        animate={{ opacity: 1, x: 0, y: [0, -18, 0], rotate: [1.1, -0.35, 1.1] }}
+                        transition={{
+                            opacity: { ...spring, delay: 0.32 },
+                            x: { ...spring, delay: 0.32 },
+                            y: { duration: 9.5, repeat: Infinity, ease: floatEase, delay: 0.4 },
+                            rotate: { duration: 9.5, repeat: Infinity, ease: floatEase, delay: 0.4 },
+                        }}
+                        className="lg:ml-12"
+                    >
+                        <Card className="rounded-[1.7rem_2.2rem_1.5rem_2.35rem]">
+                            <div className="space-y-5 text-left">
+                                <div className="flex items-center justify-between">
+                                    <div>
+                                        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+                                            Studio Notes
+                                        </p>
+                                        <p className="text-lg font-semibold text-foreground">Thoughtful systems, practical execution</p>
+                                    </div>
+                                    <Sparkles className="h-5 w-5 text-[rgb(213_177_109)]" />
+                                </div>
+
+                                <p className="max-w-sm text-base leading-relaxed text-foreground/74">
+                                    I care about building systems that are easy to understand, practical to maintain, and strong enough to support the pace of real product work.
+                                </p>
+                            </div>
+                        </Card>
+                    </motion.div>
+                </div>
             </div>
 
-            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+            <Modal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                onBackdropClick={closeModalToHero}
+            >
                 <ContactForm onSuccess={() => setIsModalOpen(false)} />
             </Modal>
         </section>
