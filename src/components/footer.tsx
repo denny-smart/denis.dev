@@ -13,7 +13,7 @@ export const Footer = () => {
         <footer className="relative z-10 px-4 pb-10 pt-8">
             <div className="mx-auto max-w-6xl">
                 <div className="overflow-hidden rounded-[2.4rem] border border-[color:var(--stroke-subtle)] bg-[linear-gradient(145deg,rgba(42,55,49,0.96),rgba(20,28,24,0.88))] shadow-[0_28px_70px_rgba(5,8,7,0.28),inset_0_1px_0_rgba(255,244,234,0.12)]">
-                    <div className="grid gap-8 px-6 py-8 md:grid-cols-[minmax(0,1.15fr)_auto] md:px-8 md:py-9">
+                    <div className="grid gap-8 px-6 py-8 md:grid-cols-[minmax(0,1fr)_minmax(280px,0.72fr)] md:items-stretch md:px-8 md:py-9">
                         <div className="space-y-5">
                             <div className="inline-flex items-center gap-3 rounded-full border border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.05)] px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[color:var(--foreground-subtle)]">
                                 <HeartHandshake className="h-4 w-4 text-[color:var(--accent-secondary)]" />
@@ -33,7 +33,7 @@ export const Footer = () => {
                             </div>
                         </div>
 
-                        <div className="flex flex-col gap-5 md:items-end">
+                        <div className="flex h-full flex-col justify-between gap-8 md:border-l md:border-[color:var(--stroke-subtle)] md:pl-8">
                             <div className="flex flex-wrap gap-3 md:justify-end">
                                 {footerLinks.map((link) => (
                                     <Link
@@ -48,7 +48,7 @@ export const Footer = () => {
 
                             <Link
                                 href="#hero"
-                                className="inline-flex items-center gap-2 rounded-full border border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.08)] px-5 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-foreground transition-transform hover:-translate-y-0.5"
+                                className="inline-flex items-center gap-2 self-start rounded-full border border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.08)] px-5 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-foreground transition-transform hover:-translate-y-0.5 md:self-end"
                             >
                                 Back to top
                                 <ArrowUpRight className="h-4 w-4" />
@@ -58,7 +58,7 @@ export const Footer = () => {
 
                     <div className="border-t border-[color:var(--stroke-subtle)] px-6 py-4 md:px-8">
                         <div className="flex flex-col gap-3 text-[0.72rem] uppercase tracking-[0.22em] text-[color:var(--foreground-muted)] md:flex-row md:items-center md:justify-between">
-                            <p>Denis Kirimi Portfolio</p>
+                            <p>Denis Kirimi</p>
                             <p>Thoughtful systems for real-world work</p>
                             <p>{new Date().getFullYear()}</p>
                         </div>
