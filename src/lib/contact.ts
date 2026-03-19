@@ -1,9 +1,9 @@
-"use server";
+export interface ContactPayload {
+    email: string;
+    request: string;
+}
 
-export async function sendTelegramMessage(formData: FormData) {
-    const email = formData.get("email");
-    const request = formData.get("request");
-
+export async function sendTelegramMessage({ email, request }: ContactPayload) {
     if (!email || !request) {
         return { success: false, message: "Email and message are required." };
     }
@@ -12,7 +12,7 @@ export async function sendTelegramMessage(formData: FormData) {
     const chatId = process.env.TELEGRAM_CHAT_ID;
 
     if (!token || !chatId) {
-        console.error("Telegram credentials not missing");
+        console.error("Telegram credentials are missing.");
         return { success: false, message: "Server configuration error." };
     }
 
@@ -36,12 +36,13 @@ ${request}
                 chat_id: chatId,
                 text,
             }),
+            cache: "no-store",
         });
 
         const data = await response.json();
 
-        if (!data.ok) {
-            console.error("Telegram API Error:", data);
+        if (!response.ok || !data.ok) {
+            console.error("Telegram API error:", data);
             return { success: false, message: "Could not send your message." };
         }
 

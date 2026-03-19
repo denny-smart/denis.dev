@@ -12,8 +12,10 @@ The site uses the Next.js App Router.
   Composes the homepage by stacking the major sections in order.
 - `src/app/globals.css`
   Defines the theme tokens, marquee animation, and base scrollbar styling.
-- `src/app/actions.ts`
-  Contains the server action used by the contact form to send Telegram messages.
+- `src/app/api/contact/route.ts`
+  Contains the API route used by the contact form to send Telegram messages.
+- `src/lib/contact.ts`
+  Holds the shared Telegram delivery logic for contact submissions.
 
 ## Homepage Layout Order
 
@@ -197,7 +199,7 @@ File: `src/components/contact-form.tsx`
 
 Purpose:
 - Collects email and message input.
-- Sends data through the server action in `src/app/actions.ts`.
+- Sends data to the `/api/contact` route.
 - Shows success and error states after submission.
 
 ## Interaction And Motion
