@@ -22,8 +22,12 @@ export async function sendTelegramMessage({ email, request }: ContactPayload) {
         return { success: false, message: "Server configuration error." };
     }
 
+    const messageId = crypto.randomUUID();
+
     const text = `
 New note from the studio
+
+ID: ${messageId}
 
 Email:
 ${email}
