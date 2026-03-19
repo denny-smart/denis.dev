@@ -23,7 +23,7 @@ export const ContactForm = ({ onSuccess, variant = "inline" }: ContactFormProps 
     const triggerSurface =
         "group relative isolate w-full cursor-pointer overflow-hidden rounded-[1.95rem_1.55rem_2.15rem_1.7rem] border border-[color:var(--stroke-subtle)] bg-[linear-gradient(145deg,rgba(36,48,43,0.94),rgba(21,28,25,0.82))] p-6 text-left shadow-[0_28px_70px_rgba(5,8,7,0.28),inset_0_1px_0_rgba(255,244,234,0.12),inset_0_-12px_24px_rgba(8,10,9,0.18)] backdrop-blur-md transition-[border-color,box-shadow,transform] duration-500 hover:border-[rgba(200,115,77,0.3)] hover:shadow-[0_36px_86px_rgba(5,8,7,0.38),0_0_0_1px_rgba(200,115,77,0.12),0_0_46px_rgba(200,115,77,0.16),inset_0_1px_0_rgba(255,244,234,0.16)] md:p-8";
     const modalSurface =
-        "relative isolate w-full max-w-4xl overflow-hidden rounded-[2rem_1.55rem_2.15rem_1.7rem] border border-[color:var(--stroke-subtle)] bg-[linear-gradient(145deg,rgba(36,48,43,0.97),rgba(21,28,25,0.92))] shadow-[0_42px_140px_rgba(5,8,7,0.58),0_0_0_1px_rgba(255,244,234,0.06),0_0_60px_rgba(200,115,77,0.18)] backdrop-blur-xl";
+        "relative mx-auto flex w-full max-w-4xl justify-center";
 
     useEffect(() => {
         if (variant !== "trigger") return;
@@ -121,7 +121,11 @@ export const ContactForm = ({ onSuccess, variant = "inline" }: ContactFormProps 
                     : { duration: 8.2, repeat: Infinity, ease: floatEase },
             }}
         >
-            <Card className="relative flex min-h-[420px] flex-col justify-center overflow-hidden border-[color:var(--stroke-subtle)] bg-[var(--surface)] p-6 sm:p-8">
+            <Card
+                disableHoverEffect
+                hideBottomAccent
+                className="relative flex min-h-[420px] flex-col justify-center overflow-hidden border-[color:var(--stroke-subtle)] bg-[var(--surface)] p-6 sm:p-8"
+            >
                 <motion.div
                     aria-hidden="true"
                     className="pointer-events-none absolute -right-12 top-10 h-32 w-32 rounded-full bg-[rgba(200,115,77,0.12)] blur-3xl"
@@ -366,7 +370,7 @@ export const ContactForm = ({ onSuccess, variant = "inline" }: ContactFormProps 
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.24, ease }}
-                        className="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(8,12,10,0.78)] p-4 backdrop-blur-md"
+                        className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-[rgba(8,12,10,0.78)] px-4 pb-6 pt-6 backdrop-blur-md md:items-center md:p-6"
                         onClick={() => setIsOpen(false)}
                     >
                         <motion.div
@@ -377,30 +381,27 @@ export const ContactForm = ({ onSuccess, variant = "inline" }: ContactFormProps 
                             className={modalSurface}
                             onClick={(event) => event.stopPropagation()}
                         >
-                            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(200,115,77,0.2),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(213,177,109,0.12),transparent_24%),linear-gradient(145deg,rgba(255,244,234,0.05),rgba(255,244,234,0.01))]" />
-                            <div className="pointer-events-none absolute inset-0 opacity-45 [background:linear-gradient(rgba(255,244,234,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,244,234,0.035)_1px,transparent_1px)] [background-size:28px_28px] [mask-image:radial-gradient(circle_at_center,black,transparent_82%)]" />
-                            <div className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-[rgba(200,115,77,0.62)] to-transparent" />
                             <motion.div
                                 aria-hidden="true"
-                                className="pointer-events-none absolute -right-12 top-10 h-40 w-40 rounded-full bg-[rgba(200,115,77,0.16)] blur-3xl"
+                                className="pointer-events-none absolute right-4 top-8 h-40 w-40 rounded-full bg-[rgba(200,115,77,0.16)] blur-3xl"
                                 animate={{ x: [0, -12, 0], y: [0, 10, 0], opacity: [0.28, 0.42, 0.28] }}
                                 transition={{ duration: 8, repeat: Infinity, ease: floatEase }}
                             />
                             <motion.div
                                 aria-hidden="true"
-                                className="pointer-events-none absolute -left-8 bottom-8 h-28 w-28 rounded-full bg-[rgba(213,177,109,0.12)] blur-3xl"
+                                className="pointer-events-none absolute left-8 bottom-8 h-28 w-28 rounded-full bg-[rgba(213,177,109,0.12)] blur-3xl"
                                 animate={{ x: [0, 10, 0], y: [0, -10, 0], opacity: [0.18, 0.3, 0.18] }}
                                 transition={{ duration: 9.4, repeat: Infinity, ease: floatEase }}
                             />
                             <button
                                 onClick={() => setIsOpen(false)}
                                 aria-label="Close contact form"
-                                className="absolute right-4 top-4 z-10 rounded-full border border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.05)] p-2 text-foreground transition-colors hover:border-[rgba(200,115,77,0.34)] hover:bg-[rgb(255_244_234_/_0.11)]"
+                                className="absolute right-3 top-3 z-10 rounded-full border border-[color:var(--stroke-subtle)] bg-[rgb(22_29_25_/_0.86)] p-2 text-foreground shadow-[0_12px_32px_rgba(5,8,7,0.38)] transition-colors hover:border-[rgba(200,115,77,0.34)] hover:bg-[rgb(30_38_33_/_0.94)]"
                             >
                                 <X className="h-5 w-5" />
                             </button>
 
-                            <div className="relative z-10 max-h-[90vh] overflow-y-auto p-2 sm:p-3">
+                            <div className="relative z-10 w-full max-h-[calc(100vh-3rem)] overflow-x-hidden overflow-y-auto md:max-h-[90vh]">
                                 {formCard}
                             </div>
                         </motion.div>
