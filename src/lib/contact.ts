@@ -1,3 +1,5 @@
+import { isValidEmail } from "@/lib/validation";
+
 export interface ContactPayload {
     email: string;
     request: string;
@@ -6,6 +8,10 @@ export interface ContactPayload {
 export async function sendTelegramMessage({ email, request }: ContactPayload) {
     if (!email || !request) {
         return { success: false, message: "Email and message are required." };
+    }
+
+    if (!isValidEmail(email)) {
+        return { success: false, message: "Please enter a valid email address." };
     }
 
     const token = process.env.TELEGRAM_BOT_TOKEN;

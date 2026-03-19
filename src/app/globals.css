@@ -75,8 +75,8 @@
     --stroke-subtle: rgb(244 238 227 / 10%);
     --shadow-hard: #0d1210;
     --terminal-bg: #15211c;
-    --terminal-text: #f2d6a1;
-    --terminal-muted: #d2b07b;
+    --terminal-text: #fff0cf;
+    --terminal-muted: #efc98d;
   }
 
   html {

@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { CircleDot, Printer, Type } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { ContactForm } from "@/components/contact-form";
@@ -16,6 +16,7 @@ const commands = {
 
 export const ContactTerminal = () => {
     const spring = { type: "spring" as const, stiffness: 100, damping: 15, mass: 0.8 };
+    const panelEase = [0.22, 1, 0.36, 1] as const;
     const [mode, setMode] = useState<"terminal" | "form">("terminal");
     const [input, setInput] = useState("");
     const [history, setHistory] = useState<string[]>([
@@ -92,69 +93,108 @@ export const ContactTerminal = () => {
                     </div>
                 </div>
 
-                {mode === "terminal" ? (
-                    <Card
-                        noPadding
-                        className="overflow-hidden rounded-[2rem] border-[color:var(--stroke-subtle)] bg-[var(--terminal-bg)] font-mono text-sm text-[color:var(--terminal-text)] shadow-[0_24px_50px_rgba(7,12,9,0.28),inset_0_1px_0_rgba(255,236,204,0.08)]"
-                    >
-                        <div className="relative">
-                            <div className="pointer-events-none absolute inset-0 opacity-20 [background:repeating-linear-gradient(to_bottom,rgba(255,236,204,0.08)_0px,rgba(255,236,204,0.08)_1px,transparent_1px,transparent_4px)]" />
-                            <div className="flex items-center gap-3 border-b border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.04)] px-5 py-3">
-                                <Printer className="h-4 w-4 text-[color:var(--terminal-muted)]" />
-                                <span className="text-[0.72rem] uppercase tracking-[0.22em] text-[color:var(--terminal-muted)]">
-                                    Contact Notes
-                                </span>
-                                <div className="ml-auto flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.18em] text-[color:var(--terminal-muted)]">
-                                    <CircleDot className="h-3.5 w-3.5" />
-                                    online
-                                </div>
-                            </div>
-
-                            <div
-                                ref={logRef}
-                                className="relative h-[380px] cursor-text overflow-y-auto px-5 py-6"
-                                onClick={focusInput}
+                <AnimatePresence mode="wait">
+                    {mode === "terminal" ? (
+                        <motion.div
+                            key="terminal"
+                            initial={{ opacity: 0, y: 20, scale: 0.985, filter: "blur(8px)" }}
+                            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+                            exit={{ opacity: 0, y: -18, scale: 0.98, filter: "blur(10px)" }}
+                            transition={{
+                                opacity: { duration: 0.24, ease: panelEase },
+                                y: { duration: 0.28, ease: panelEase },
+                                scale: { duration: 0.28, ease: panelEase },
+                                filter: { duration: 0.3, ease: panelEase },
+                            }}
+                        >
+                            <Card
+                                noPadding
+                                className="overflow-hidden rounded-[2rem] border-[color:var(--stroke-subtle)] bg-[var(--terminal-bg)] font-mono text-sm text-[color:var(--terminal-text)] shadow-[0_24px_50px_rgba(7,12,9,0.28),inset_0_1px_0_rgba(255,236,204,0.08)]"
                             >
-                                <div className="space-y-3">
-                                    {history.map((line, i) => (
-                                        <motion.div
-                                            key={`${i}-${line}`}
-                                            initial={{ opacity: 0, y: 8, filter: "blur(4px)", scaleY: 1.05 }}
-                                            animate={{ opacity: 1, y: 0, filter: "blur(0px)", scaleY: 1 }}
-                                            transition={spring}
-                                            className={line.startsWith("print>")
-                                                ? "text-[color:var(--terminal-muted)]"
-                                                : "text-[color:var(--terminal-text)] drop-shadow-[0_1px_0_rgba(250,231,194,0.12)]"}
-                                        >
-                                            {line}
-                                        </motion.div>
-                                    ))}
-                                </div>
+                                <div className="relative">
+                                    <div className="pointer-events-none absolute inset-0 opacity-20 [background:repeating-linear-gradient(to_bottom,rgba(255,236,204,0.08)_0px,rgba(255,236,204,0.08)_1px,transparent_1px,transparent_4px)]" />
+                                    <div className="flex items-center gap-3 border-b border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.04)] px-5 py-3">
+                                        <Printer className="h-4 w-4 text-[color:var(--terminal-muted)]" />
+                                        <span className="text-[0.72rem] uppercase tracking-[0.22em] text-[color:var(--terminal-muted)]">
+                                            Contact Notes
+                                        </span>
+                                        <div className="ml-auto flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.18em] text-[color:var(--terminal-muted)]">
+                                            <CircleDot className="h-3.5 w-3.5" />
+                                            online
+                                        </div>
+                                    </div>
 
-                                <form onSubmit={handleCommand} className="mt-5 flex items-center gap-3 border-t border-[color:var(--stroke-subtle)] pt-4">
-                                    <Type className="h-4 w-4 text-[color:var(--terminal-muted)]" />
-                                    <span className="text-[color:var(--terminal-muted)]">print&gt;</span>
-                                    <input
-                                        ref={inputRef}
-                                        type="text"
-                                        value={input}
-                                        onChange={(e) => setInput(e.target.value)}
-                                        className="w-full border-none bg-transparent text-[color:var(--terminal-text)] outline-none placeholder:text-[rgba(210,176,123,0.55)]"
-                                        placeholder="Try email, socials, or status"
-                                        autoFocus
-                                    />
-                                    <motion.div
-                                        animate={{ opacity: [1, 0.25, 1] }}
-                                        transition={{ duration: 1.2, repeat: Infinity }}
-                                        className="h-4 w-2 bg-[color:var(--terminal-text)]"
-                                    />
-                                </form>
-                            </div>
-                        </div>
-                    </Card>
-                ) : (
-                    <ContactForm />
-                )}
+                                    <div
+                                        ref={logRef}
+                                        className="relative h-[380px] cursor-text overflow-y-auto px-5 py-6"
+                                        onClick={focusInput}
+                                    >
+                                        <div className="space-y-3">
+                                            {history.map((line, i) => (
+                                                <motion.div
+                                                    key={`${i}-${line}`}
+                                                    initial={{ opacity: 0, y: 8, filter: "blur(4px)", scaleY: 1.05 }}
+                                                    animate={{ opacity: 1, y: 0, filter: "blur(0px)", scaleY: 1 }}
+                                                    transition={spring}
+                                                    className={line.startsWith("print>")
+                                                        ? "text-[color:var(--terminal-muted)]"
+                                                        : "text-[color:var(--terminal-text)] drop-shadow-[0_1px_0_rgba(250,231,194,0.12)]"}
+                                                >
+                                                    {line}
+                                                </motion.div>
+                                            ))}
+                                        </div>
+
+                                        <form onSubmit={handleCommand} className="mt-5 border-t border-[color:var(--stroke-subtle)] pt-4">
+                                            <div className="mb-3 flex items-center justify-between gap-3 text-[0.68rem] uppercase tracking-[0.18em] text-[color:var(--terminal-muted)]">
+                                                <div className="flex items-center gap-2">
+                                                    <Type className="h-4 w-4" />
+                                                    <span>Command Prompt</span>
+                                                </div>
+                                                <span>Type and press Enter</span>
+                                            </div>
+
+                                            <div className="flex items-center gap-3 rounded-[1rem] border border-[rgba(255,240,207,0.18)] bg-[rgba(255,244,234,0.05)] px-4 py-3 shadow-[inset_0_1px_0_rgba(255,244,234,0.06)]">
+                                                <span className="rounded-md bg-[rgba(239,201,141,0.22)] px-2.5 py-1 text-[0.92rem] font-semibold tracking-[0.04em] text-[color:var(--terminal-text)]">
+                                                    print&gt;
+                                                </span>
+                                                <input
+                                                    ref={inputRef}
+                                                    type="text"
+                                                    value={input}
+                                                    onChange={(e) => setInput(e.target.value)}
+                                                    className="w-full border-none bg-transparent text-[color:var(--terminal-text)] outline-none placeholder:text-[rgba(255,240,207,0.82)]"
+                                                    placeholder="Type here: email, socials, or status"
+                                                    autoFocus
+                                                />
+                                                <motion.div
+                                                    animate={{ opacity: [1, 0.25, 1] }}
+                                                    transition={{ duration: 1.2, repeat: Infinity }}
+                                                    className="h-5 w-2 rounded-sm bg-[color:var(--terminal-text)]"
+                                                />
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </Card>
+                        </motion.div>
+                    ) : (
+                        <motion.div
+                            key="form"
+                            initial={{ opacity: 0, y: 24, scale: 0.985, filter: "blur(10px)" }}
+                            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+                            exit={{ opacity: 0, y: -18, scale: 0.98, filter: "blur(10px)" }}
+                            transition={{
+                                opacity: { duration: 0.26, ease: panelEase },
+                                y: { duration: 0.32, ease: panelEase },
+                                scale: { duration: 0.32, ease: panelEase },
+                                filter: { duration: 0.34, ease: panelEase },
+                            }}
+                        >
+                            <ContactForm variant="trigger" />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
         </section>
     );
