@@ -23,7 +23,7 @@ export const Stats = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ ...spring, delay: i * 0.08 }}
                             viewport={{ once: true }}
-                            className="rounded-[1.7rem] border border-[color:var(--stroke-subtle)] bg-[var(--surface-soft)] px-5 py-6 text-center shadow-[8px_8px_0_var(--shadow-hard)]"
+                            className="rounded-[1.7rem] border border-[color:var(--stroke-subtle)] bg-[var(--surface-soft)] px-5 py-6 text-center shadow-[8px_8px_0_var(--shadow-hard),0_0_30px_rgba(255,244,234,0.03)]"
                         >
                             <h3 className="text-4xl text-foreground sm:text-5xl">
                                 {stat.value}

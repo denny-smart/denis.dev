@@ -4,17 +4,18 @@ export const GridBackground = () => {
 
     return (
         <div className="fixed inset-0 z-0 min-h-screen w-full overflow-hidden bg-background">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(200,115,77,0.14),transparent_28%),radial-gradient(circle_at_82%_12%,rgba(185,173,201,0.12),transparent_22%),linear-gradient(180deg,rgba(12,16,14,0.08),rgba(12,16,14,0.45))]" />
-            <div className="absolute inset-x-0 top-[-12%] h-[48vh] bg-[radial-gradient(circle_at_center,rgba(255,244,234,0.1),transparent_65%)] blur-3xl" />
-            <div className="absolute inset-y-0 right-[-10%] w-[40vw] bg-[radial-gradient(circle_at_center,rgba(213,177,109,0.12),transparent_58%)] blur-3xl" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(146,162,129,0.08),transparent_30%),radial-gradient(circle_at_82%_14%,rgba(240,202,138,0.045),transparent_24%),radial-gradient(circle_at_50%_0%,rgba(255,245,228,0.06),transparent_38%),linear-gradient(180deg,rgba(255,248,235,0.018),rgba(13,17,15,0.08))]" />
+            <div className="absolute inset-x-0 top-[-18%] h-[40vh] bg-[radial-gradient(circle_at_center,rgba(255,245,228,0.08),transparent_72%)] blur-3xl" />
+            <div className="absolute left-[-4%] top-[24%] h-[18rem] w-[18rem] rounded-full bg-[radial-gradient(circle_at_center,rgba(145,161,128,0.045),transparent_60%)] blur-3xl" />
+            <div className="absolute inset-y-0 right-[-4%] w-[28vw] bg-[radial-gradient(circle_at_center,rgba(240,202,138,0.045),transparent_60%)] blur-3xl" />
             <div
-                className="absolute inset-0 opacity-35"
+                className="absolute inset-0 opacity-16"
                 style={{
                     backgroundImage: contourPattern,
                     backgroundSize: "320px 220px",
                 }}
             />
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_38%,rgba(6,10,8,0.46)_100%)]" />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_48%,rgba(9,12,10,0.1)_100%)]" />
         </div>
     );
 };
