@@ -40,7 +40,7 @@ export const Expertise = () => {
     ];
 
     return (
-        <section className="relative z-10 scroll-mt-28 px-4 pb-10 pt-16 md:scroll-mt-32 md:pb-14 md:pt-20" id="expertise">
+        <section className="relative z-10 scroll-mt-28 px-4 pb-0 pt-16 md:scroll-mt-32 md:pb-0 md:pt-20" id="expertise">
             <div className="mx-auto max-w-6xl space-y-8 md:space-y-12">
                 <div className="grid gap-6 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:items-end">
                     <div className="space-y-4">

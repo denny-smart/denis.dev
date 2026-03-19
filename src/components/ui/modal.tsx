@@ -38,7 +38,7 @@ export const Modal = ({ isOpen, onClose, children, title, onBackdropClick }: Mod
                         exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
                         transition={{ duration: 0.28, ease }}
                         onClick={onBackdropClick ?? onClose}
-                        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
+                        className="fixed inset-0 z-50 bg-[radial-gradient(circle_at_top,rgba(255,244,234,0.08),transparent_28%),rgba(10,14,12,0.76)] backdrop-blur-sm"
                     />
 
                     {/* Modal */}
@@ -86,9 +86,9 @@ export const Modal = ({ isOpen, onClose, children, title, onBackdropClick }: Mod
                                     whileHover={{ scale: 1.04 }}
                                     whileTap={{ scale: 0.96 }}
                                     transition={spring}
-                                    className="absolute top-4 right-4 p-2 rounded-full bg-zinc-950/80 hover:bg-zinc-800 transition-colors z-10"
+                                    className="absolute right-4 top-4 z-10 rounded-full border border-white/10 bg-[rgba(36,47,42,0.86)] p-2 text-foreground shadow-[0_12px_32px_rgba(10,14,12,0.24)] transition-colors hover:border-accent/30 hover:bg-[rgba(49,64,58,0.92)]"
                                 >
-                                    <X className="w-5 h-5 text-zinc-400" />
+                                    <X className="h-5 w-5 text-[color:var(--foreground-subtle)]" />
                                 </motion.button>
                             )}
                         </motion.div>

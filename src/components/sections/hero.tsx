@@ -35,8 +35,9 @@ export const Hero = () => {
 
     return (
         <section className="relative flex min-h-[100svh] items-center overflow-hidden px-4 pb-10 pt-24 md:px-8 md:pb-14 md:pt-26" id="hero">
-            <div className="pointer-events-none absolute left-[4%] top-[12%] h-52 w-52 rounded-full bg-accent/10 blur-3xl" />
-            <div className="pointer-events-none absolute bottom-[8%] right-[4%] h-64 w-64 rounded-full bg-[rgb(185_173_201_/_0.12)] blur-3xl" />
+            <div className="pointer-events-none absolute left-[4%] top-[12%] h-60 w-60 rounded-full bg-[rgb(223_132_91_/_0.16)] blur-3xl" />
+            <div className="pointer-events-none absolute bottom-[8%] right-[4%] h-72 w-72 rounded-full bg-[rgb(208_191_215_/_0.16)] blur-3xl" />
+            <div className="pointer-events-none absolute inset-x-[20%] top-[2%] h-44 rounded-full bg-[rgb(255_244_234_/_0.08)] blur-3xl" />
 
             <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-8 lg:grid-cols-[minmax(0,1.22fr)_minmax(300px,0.74fr)] lg:items-center xl:gap-14">
                 <motion.div
@@ -49,7 +50,7 @@ export const Hero = () => {
                         initial={{ opacity: 0, y: 18 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ ...spring, delay: 0.08 }}
-                        className="inline-flex items-center gap-3 rounded-full border border-white/12 bg-white/[0.045] px-4 py-2 shadow-[inset_0_1px_0_rgba(255,244,234,0.12)] backdrop-blur-md"
+                        className="inline-flex items-center gap-3 rounded-full border border-white/14 bg-white/[0.08] px-4 py-2 shadow-[0_0_24px_rgba(255,244,234,0.04),inset_0_1px_0_rgba(255,244,234,0.16)] backdrop-blur-md"
                     >
                         <span className="h-2 w-2 rounded-full bg-accent" />
                         <span className="text-xs font-semibold uppercase tracking-[0.22em] text-foreground/80">
@@ -66,7 +67,7 @@ export const Hero = () => {
                             <span className="block">Building</span>
                             <span className="block">
                                 <span className="relative inline-flex px-[0.05em] text-accent">
-                                    <span className="absolute inset-x-1 bottom-2 h-4 rounded-full bg-accent/15 blur-md" />
+                                    <span className="absolute inset-x-1 bottom-2 h-4 rounded-full bg-accent/22 blur-md" />
                                     <span className="relative">systems</span>
                                 </span>{" "}
                                 for real
@@ -93,7 +94,7 @@ export const Hero = () => {
                             whileHover={{ y: -2 }}
                             whileTap={{ scale: 0.985 }}
                             transition={spring}
-                            className="inline-flex h-13 items-center gap-2 rounded-full border border-[#f3e8d4]/20 bg-primary px-6 text-[0.98rem] font-semibold text-primary-foreground shadow-[0_18px_38px_rgba(15,18,16,0.18)]"
+                            className="inline-flex h-13 items-center gap-2 rounded-full border border-[rgba(223,132,91,0.24)] bg-[linear-gradient(180deg,#f8edd9,#f1dfc1)] px-6 text-[0.98rem] font-semibold text-primary-foreground shadow-[0_18px_38px_rgba(255,234,197,0.12),0_0_30px_rgba(223,132,91,0.12)]"
                         >
                             <span>View Projects</span>
                             <ArrowUpRight className="h-4 w-4" />
@@ -116,7 +117,7 @@ export const Hero = () => {
                         {highlights.map((item) => (
                             <div
                                 key={item}
-                                className="rounded-[1.35rem] border border-white/10 bg-white/[0.035] px-4 py-3 text-sm leading-relaxed text-foreground/72 shadow-[inset_0_1px_0_rgba(255,244,234,0.08)] backdrop-blur-sm lg:min-h-[88px]"
+                                className="rounded-[1.35rem] border border-white/12 bg-white/[0.07] px-4 py-3 text-sm leading-relaxed text-foreground/76 shadow-[0_0_22px_rgba(255,244,234,0.03),inset_0_1px_0_rgba(255,244,234,0.12)] backdrop-blur-sm lg:min-h-[88px]"
                             >
                                 {item}
                             </div>
@@ -139,7 +140,7 @@ export const Hero = () => {
                         <Card className="w-full rounded-[2.2rem_1.4rem_2.45rem_1.65rem] p-5 md:p-5 lg:w-[91%]">
                             <div className="space-y-3.5 text-left">
                                 <div className="flex items-center gap-3">
-                                    <div className="rounded-[1.1rem] bg-accent/14 p-2.5 text-accent">
+                                        <div className="rounded-[1.1rem] bg-accent/18 p-2.5 text-accent shadow-[0_0_20px_rgba(223,132,91,0.12)]">
                                         <ShieldCheck className="h-4.5 w-4.5" />
                                     </div>
                                     <div>
@@ -158,7 +159,7 @@ export const Hero = () => {
                                     {capabilityTags.map((tag) => (
                                         <span
                                             key={tag}
-                                            className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-[0.58rem] font-semibold uppercase tracking-[0.16em] text-foreground/72"
+                                            className="rounded-full border border-white/12 bg-white/[0.08] px-3 py-1 text-[0.58rem] font-semibold uppercase tracking-[0.16em] text-foreground/76"
                                         >
                                             {tag}
                                         </span>
@@ -171,7 +172,7 @@ export const Hero = () => {
                                     ].map((item) => (
                                         <div
                                             key={item}
-                                            className="rounded-2xl border border-white/8 bg-black/10 px-3 py-2 text-[0.9rem] leading-relaxed text-foreground/68"
+                                            className="rounded-2xl border border-white/10 bg-white/[0.05] px-3 py-2 text-[0.9rem] leading-relaxed text-foreground/72"
                                         >
                                             {item}
                                         </div>
@@ -203,14 +204,14 @@ export const Hero = () => {
                                             Thoughtful systems, practical execution
                                         </p>
                                     </div>
-                                    <Sparkles className="h-4.5 w-4.5 text-[rgb(213_177_109)]" />
+                                    <Sparkles className="h-4.5 w-4.5 text-[rgb(235_199_132)] drop-shadow-[0_0_18px_rgba(235,199,132,0.18)]" />
                                 </div>
 
                                 <div className="space-y-2.5">
                                     {workingStyle.map((item) => (
                                         <div
                                             key={item}
-                                            className="rounded-2xl border border-white/8 bg-white/[0.035] px-3 py-2 text-[0.9rem] leading-relaxed text-foreground/72"
+                                            className="rounded-2xl border border-white/10 bg-white/[0.06] px-3 py-2 text-[0.9rem] leading-relaxed text-foreground/76"
                                         >
                                             {item}
                                         </div>

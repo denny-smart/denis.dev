@@ -59,9 +59,9 @@ export const ContactTerminal = () => {
     };
 
     return (
-        <section className="scroll-mt-28 px-4 pb-24 pt-8 md:scroll-mt-32 md:pt-12" id="contact">
-            <div className="mx-auto w-full max-w-5xl space-y-10">
-                <div className="space-y-4 text-center">
+        <section className="-mt-8 scroll-mt-28 px-4 pb-24 pt-0 md:-mt-10 md:scroll-mt-32" id="contact">
+            <div className="mx-auto w-full max-w-5xl space-y-4 md:space-y-5">
+                <div className="space-y-2.5 text-center">
                     <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[color:var(--foreground-muted)]">
                         Contact
                     </p>
@@ -71,7 +71,7 @@ export const ContactTerminal = () => {
                     <p className="mx-auto max-w-2xl text-lg leading-8 text-foreground/74">
                         The terminal now feels closer to a desk object than a hacking prop: amber ink, forest-green glass, and responses that land with a little more printed weight.
                     </p>
-                    <div className="flex justify-center gap-4 pt-2">
+                    <div className="flex justify-center gap-4 pt-1">
                         <button
                             onClick={() => setMode("terminal")}
                             className={`rounded-full border px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] transition-colors ${mode === "terminal"

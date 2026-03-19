@@ -21,7 +21,7 @@ export const ContactForm = ({ onSuccess, variant = "inline" }: ContactFormProps 
     const ease = [0.22, 1, 0.36, 1] as const;
     const floatEase = [0.37, 0, 0.18, 1] as const;
     const triggerSurface =
-        "group relative isolate w-full cursor-pointer overflow-hidden rounded-[1.95rem_1.55rem_2.15rem_1.7rem] border border-[color:var(--stroke-subtle)] bg-[linear-gradient(145deg,rgba(36,48,43,0.94),rgba(21,28,25,0.82))] p-6 text-left shadow-[0_28px_70px_rgba(5,8,7,0.28),inset_0_1px_0_rgba(255,244,234,0.12),inset_0_-12px_24px_rgba(8,10,9,0.18)] backdrop-blur-md transition-[border-color,box-shadow,transform] duration-500 hover:border-[rgba(200,115,77,0.3)] hover:shadow-[0_36px_86px_rgba(5,8,7,0.38),0_0_0_1px_rgba(200,115,77,0.12),0_0_46px_rgba(200,115,77,0.16),inset_0_1px_0_rgba(255,244,234,0.16)] md:p-8";
+        "group relative isolate w-full cursor-pointer overflow-hidden rounded-[1.95rem_1.55rem_2.15rem_1.7rem] border border-[color:var(--stroke-subtle)] bg-[linear-gradient(145deg,rgba(67,83,76,0.96),rgba(35,47,42,0.88))] p-6 text-left shadow-[0_28px_70px_rgba(10,14,12,0.24),0_0_0_1px_rgba(255,244,234,0.04),inset_0_1px_0_rgba(255,248,237,0.18),inset_0_-12px_24px_rgba(12,15,13,0.12)] backdrop-blur-xl transition-[border-color,box-shadow,transform] duration-500 hover:border-[rgba(223,132,91,0.34)] hover:shadow-[0_36px_86px_rgba(10,14,12,0.3),0_0_0_1px_rgba(223,132,91,0.14),0_0_46px_rgba(223,132,91,0.16),inset_0_1px_0_rgba(255,248,237,0.22)] md:p-8";
     const modalSurface =
         "relative mx-auto flex w-full max-w-4xl justify-center";
 
@@ -128,13 +128,13 @@ export const ContactForm = ({ onSuccess, variant = "inline" }: ContactFormProps 
             >
                 <motion.div
                     aria-hidden="true"
-                    className="pointer-events-none absolute -right-12 top-10 h-32 w-32 rounded-full bg-[rgba(200,115,77,0.12)] blur-3xl"
+                    className="pointer-events-none absolute -right-12 top-10 h-32 w-32 rounded-full bg-[rgba(223,132,91,0.16)] blur-3xl"
                     animate={{ x: [0, -10, 0], y: [0, 10, 0], opacity: [0.38, 0.55, 0.38] }}
                     transition={{ duration: 7.5, repeat: Infinity, ease: floatEase }}
                 />
                 <motion.div
                     aria-hidden="true"
-                    className="pointer-events-none absolute -left-10 bottom-8 h-24 w-24 rounded-full bg-[rgba(213,177,109,0.08)] blur-3xl"
+                    className="pointer-events-none absolute -left-10 bottom-8 h-24 w-24 rounded-full bg-[rgba(235,199,132,0.1)] blur-3xl"
                     animate={{ x: [0, 8, 0], y: [0, -8, 0], opacity: [0.2, 0.34, 0.2] }}
                     transition={{ duration: 9.2, repeat: Infinity, ease: floatEase }}
                 />
@@ -168,7 +168,7 @@ export const ContactForm = ({ onSuccess, variant = "inline" }: ContactFormProps 
                             transition={spring}
                             className="py-8 text-center"
                         >
-                            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[rgb(200_115_77_/_0.14)] text-[color:var(--accent-primary)]">
+                            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[rgb(223_132_91_/_0.18)] text-[color:var(--accent-primary)] shadow-[0_0_28px_rgba(223,132,91,0.18)]">
                                 <Send className="h-8 w-8" />
                             </div>
                             <h4 className="mb-2 text-lg font-semibold text-foreground">Message sent</h4>
@@ -317,20 +317,20 @@ export const ContactForm = ({ onSuccess, variant = "inline" }: ContactFormProps 
                 transition={spring}
                 className={triggerSurface}
             >
-                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(200,115,77,0.16),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(213,177,109,0.12),transparent_24%),linear-gradient(135deg,rgba(255,244,234,0.05),rgba(255,244,234,0.01))]" />
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(223,132,91,0.2),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(235,199,132,0.16),transparent_24%),radial-gradient(circle_at_top_left,rgba(255,244,234,0.14),transparent_30%),linear-gradient(135deg,rgba(255,244,234,0.08),rgba(255,244,234,0.02))]" />
                 <div className="pointer-events-none absolute inset-0 opacity-50 [background:linear-gradient(rgba(255,244,234,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,244,234,0.04)_1px,transparent_1px)] [background-size:26px_26px] [mask-image:radial-gradient(circle_at_center,black,transparent_82%)]" />
-                <div className="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-[rgba(200,115,77,0.58)] to-transparent" />
-                <div className="pointer-events-none absolute left-0 top-0 h-16 w-16 rounded-tl-[1.95rem] border-l-2 border-t-2 border-[rgba(200,115,77,0.3)] transition-colors group-hover:border-[rgba(200,115,77,0.55)]" />
-                <div className="pointer-events-none absolute bottom-0 right-0 h-16 w-16 rounded-br-[1.7rem] border-b-2 border-r-2 border-[rgba(213,177,109,0.28)] transition-colors group-hover:border-[rgba(213,177,109,0.5)]" />
+                <div className="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-[rgba(223,132,91,0.58)] to-transparent" />
+                <div className="pointer-events-none absolute left-0 top-0 h-16 w-16 rounded-tl-[1.95rem] border-l-2 border-t-2 border-[rgba(223,132,91,0.34)] transition-colors group-hover:border-[rgba(223,132,91,0.58)]" />
+                <div className="pointer-events-none absolute bottom-0 right-0 h-16 w-16 rounded-br-[1.7rem] border-b-2 border-r-2 border-[rgba(235,199,132,0.32)] transition-colors group-hover:border-[rgba(235,199,132,0.54)]" />
                 <motion.div
                     aria-hidden="true"
-                    className="pointer-events-none absolute -right-12 top-8 h-32 w-32 rounded-full bg-[rgba(200,115,77,0.14)] blur-3xl"
+                    className="pointer-events-none absolute -right-12 top-8 h-32 w-32 rounded-full bg-[rgba(223,132,91,0.18)] blur-3xl"
                     animate={{ x: [0, -10, 0], y: [0, 10, 0], opacity: [0.32, 0.5, 0.32] }}
                     transition={{ duration: 7.2, repeat: Infinity, ease: floatEase }}
                 />
                 <motion.div
                     aria-hidden="true"
-                    className="pointer-events-none absolute -left-10 bottom-6 h-24 w-24 rounded-full bg-[rgba(213,177,109,0.12)] blur-3xl"
+                    className="pointer-events-none absolute -left-10 bottom-6 h-24 w-24 rounded-full bg-[rgba(235,199,132,0.14)] blur-3xl"
                     animate={{ x: [0, 8, 0], y: [0, -8, 0], opacity: [0.2, 0.34, 0.2] }}
                     transition={{ duration: 8.6, repeat: Infinity, ease: floatEase }}
                 />
@@ -352,10 +352,10 @@ export const ContactForm = ({ onSuccess, variant = "inline" }: ContactFormProps 
                     </div>
 
                     <div className="flex flex-col items-start gap-4 md:items-end">
-                        <div className="rounded-full border border-[rgba(200,115,77,0.22)] bg-[rgba(200,115,77,0.08)] px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-[color:var(--accent-primary)]">
+                        <div className="rounded-full border border-[rgba(223,132,91,0.24)] bg-[rgba(223,132,91,0.1)] px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-[color:var(--accent-primary)]">
                             Click to float
                         </div>
-                        <div className="inline-flex items-center gap-3 rounded-full border border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.04)] px-5 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-foreground transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:border-[rgba(200,115,77,0.34)]">
+                        <div className="inline-flex items-center gap-3 rounded-full border border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.08)] px-5 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-foreground transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:border-[rgba(223,132,91,0.34)]">
                             Open Form
                             <ArrowUpRight className="h-4 w-4" />
                         </div>
@@ -370,7 +370,7 @@ export const ContactForm = ({ onSuccess, variant = "inline" }: ContactFormProps 
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.24, ease }}
-                        className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-[rgba(8,12,10,0.78)] px-4 pb-6 pt-6 backdrop-blur-md md:items-center md:p-6"
+                        className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-[radial-gradient(circle_at_top,rgba(255,244,234,0.08),transparent_28%),rgba(10,14,12,0.76)] px-4 pb-6 pt-6 backdrop-blur-md md:items-center md:p-6"
                         onClick={() => setIsOpen(false)}
                     >
                         <motion.div
@@ -383,20 +383,20 @@ export const ContactForm = ({ onSuccess, variant = "inline" }: ContactFormProps 
                         >
                             <motion.div
                                 aria-hidden="true"
-                                className="pointer-events-none absolute right-4 top-8 h-40 w-40 rounded-full bg-[rgba(200,115,77,0.16)] blur-3xl"
+                                className="pointer-events-none absolute right-4 top-8 h-40 w-40 rounded-full bg-[rgba(223,132,91,0.18)] blur-3xl"
                                 animate={{ x: [0, -12, 0], y: [0, 10, 0], opacity: [0.28, 0.42, 0.28] }}
                                 transition={{ duration: 8, repeat: Infinity, ease: floatEase }}
                             />
                             <motion.div
                                 aria-hidden="true"
-                                className="pointer-events-none absolute left-8 bottom-8 h-28 w-28 rounded-full bg-[rgba(213,177,109,0.12)] blur-3xl"
+                                className="pointer-events-none absolute left-8 bottom-8 h-28 w-28 rounded-full bg-[rgba(235,199,132,0.14)] blur-3xl"
                                 animate={{ x: [0, 10, 0], y: [0, -10, 0], opacity: [0.18, 0.3, 0.18] }}
                                 transition={{ duration: 9.4, repeat: Infinity, ease: floatEase }}
                             />
                             <button
                                 onClick={() => setIsOpen(false)}
                                 aria-label="Close contact form"
-                                className="absolute right-3 top-3 z-10 rounded-full border border-[color:var(--stroke-subtle)] bg-[rgb(22_29_25_/_0.86)] p-2 text-foreground shadow-[0_12px_32px_rgba(5,8,7,0.38)] transition-colors hover:border-[rgba(200,115,77,0.34)] hover:bg-[rgb(30_38_33_/_0.94)]"
+                                className="absolute right-3 top-3 z-10 rounded-full border border-[color:var(--stroke-subtle)] bg-[rgb(37_49_44_/_0.9)] p-2 text-foreground shadow-[0_12px_32px_rgba(10,14,12,0.24)] transition-colors hover:border-[rgba(223,132,91,0.34)] hover:bg-[rgb(49_64_58_/_0.94)]"
                             >
                                 <X className="h-5 w-5" />
                             </button>

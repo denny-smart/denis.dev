@@ -18,10 +18,10 @@ export const Button = ({
     ...props
 }: ButtonProps) => {
     const variants = {
-        primary: "border border-accent/20 bg-accent text-accent-foreground shadow-[0_18px_36px_rgba(200,115,77,0.26)] hover:bg-[#d27f59]",
-        secondary: "border border-white/10 bg-white/[0.06] text-foreground hover:bg-white/[0.1]",
-        outline: "border border-white/12 bg-white/[0.03] text-foreground hover:border-accent/40 hover:bg-white/[0.08]",
-        ghost: "text-muted-foreground hover:bg-white/[0.06] hover:text-foreground",
+        primary: "border border-accent/25 bg-[linear-gradient(180deg,#ea966f,#d97f55)] text-accent-foreground shadow-[0_18px_36px_rgba(223,132,91,0.28),0_0_34px_rgba(223,132,91,0.14)] hover:border-accent/45 hover:bg-[linear-gradient(180deg,#f0a47f,#dc845d)]",
+        secondary: "border border-white/12 bg-white/[0.09] text-foreground shadow-[inset_0_1px_0_rgba(255,248,237,0.16)] hover:bg-white/[0.14]",
+        outline: "border border-white/16 bg-[rgba(255,244,234,0.06)] text-foreground shadow-[inset_0_1px_0_rgba(255,248,237,0.1)] hover:border-accent/44 hover:bg-[rgba(255,244,234,0.11)]",
+        ghost: "text-muted-foreground hover:bg-white/[0.08] hover:text-foreground",
     };
 
     const sizes = {
