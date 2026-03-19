@@ -58,7 +58,7 @@ export const ContactTerminal = () => {
     };
 
     return (
-        <section className="scroll-mt-28 px-4 py-24 md:scroll-mt-32" id="contact">
+        <section className="scroll-mt-28 px-4 pb-24 pt-8 md:scroll-mt-32 md:pt-12" id="contact">
             <div className="mx-auto w-full max-w-5xl space-y-10">
                 <div className="space-y-4 text-center">
                     <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[color:var(--foreground-muted)]">

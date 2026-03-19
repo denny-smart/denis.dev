@@ -13,7 +13,7 @@ export const Stats = () => {
     const spring = { type: "spring" as const, stiffness: 100, damping: 15, mass: 0.8 };
 
     return (
-        <section className="relative z-10 px-4 py-20 md:py-24">
+        <section className="relative z-10 px-4 py-12 md:py-16">
             <div className="mx-auto max-w-6xl">
                 <div className="grid grid-cols-2 gap-5 md:grid-cols-4">
                     {stats.map((stat, i) => (

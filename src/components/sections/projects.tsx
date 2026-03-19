@@ -103,8 +103,8 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
 
 export const Projects = () => {
     return (
-        <section className="scroll-mt-28 px-4 pb-8 pt-24 md:scroll-mt-32 md:pt-28" id="projects">
-            <div className="mx-auto max-w-6xl space-y-14 md:space-y-20">
+        <section className="scroll-mt-28 px-4 pb-8 pt-10 md:scroll-mt-32 md:pt-16" id="projects">
+            <div className="mx-auto max-w-6xl space-y-8 md:space-y-12">
                 <div className="grid gap-5 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-end">
                     <div className="space-y-4">
                         <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[color:var(--foreground-muted)]">
