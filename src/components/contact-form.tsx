@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { motion } from "framer-motion";
 import { Loader2, Mail, MessageSquare, Send } from "lucide-react";
-import { sendTelegramMessage } from "@/app/actions";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -16,17 +15,47 @@ export const ContactForm = ({ onSuccess }: ContactFormProps = {}) => {
     const [status, setStatus] = useState<{ success: boolean; message: string } | null>(null);
     const spring = { type: "spring" as const, stiffness: 100, damping: 15, mass: 0.8 };
 
-    async function handleSubmit(formData: FormData) {
+    async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault();
         setPending(true);
         setStatus(null);
 
-        const result = await sendTelegramMessage(formData);
+        const form = event.currentTarget;
+        const formData = new FormData(form);
+        const email = formData.get("email");
+        const request = formData.get("request");
+
+        const payload = {
+            email: typeof email === "string" ? email.trim() : "",
+            request: typeof request === "string" ? request.trim() : "",
+        };
+
+        let result: { success: boolean; message: string };
+
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload),
+            });
+
+            result = await response.json();
+        } catch (error) {
+            console.error("Error submitting contact form:", error);
+            result = { success: false, message: "Something went wrong. Please try again." };
+        }
 
         setStatus(result);
         setPending(false);
 
-        if (result.success && onSuccess) {
-            setTimeout(() => onSuccess(), 1500);
+        if (result.success) {
+            form.reset();
+
+            if (onSuccess) {
+                setTimeout(() => onSuccess(), 1500);
+            }
         }
     }
 
@@ -68,7 +97,7 @@ export const ContactForm = ({ onSuccess }: ContactFormProps = {}) => {
                     </Button>
                 </motion.div>
             ) : (
-                <form action={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="space-y-2">
                         <label htmlFor="email" className="text-sm font-medium text-foreground/88">
                             Email address
