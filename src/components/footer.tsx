@@ -1,9 +1,70 @@
+import Link from "next/link";
+import { ArrowUpRight, HeartHandshake } from "lucide-react";
+
+const footerLinks = [
+    { label: "Projects", href: "#projects" },
+    { label: "About", href: "#about" },
+    { label: "Expertise", href: "#expertise" },
+    { label: "Contact", href: "#contact" },
+];
+
 export const Footer = () => {
     return (
-        <footer className="py-6 border-t border-zinc-800/50 text-center">
-            <p className="font-mono text-xs text-zinc-600">
-                SECURE_ARCH // SYSTEM_V.1.0.0 // {new Date().getFullYear()}
-            </p>
+        <footer className="relative z-10 px-4 pb-10 pt-8">
+            <div className="mx-auto max-w-6xl">
+                <div className="overflow-hidden rounded-[2.4rem] border border-[color:var(--stroke-subtle)] bg-[linear-gradient(145deg,rgba(42,55,49,0.96),rgba(20,28,24,0.88))] shadow-[0_28px_70px_rgba(5,8,7,0.28),inset_0_1px_0_rgba(255,244,234,0.12)]">
+                    <div className="grid gap-8 px-6 py-8 md:grid-cols-[minmax(0,1.15fr)_auto] md:px-8 md:py-9">
+                        <div className="space-y-5">
+                            <div className="inline-flex items-center gap-3 rounded-full border border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.05)] px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[color:var(--foreground-subtle)]">
+                                <HeartHandshake className="h-4 w-4 text-[color:var(--accent-secondary)]" />
+                                Thanks for visiting
+                            </div>
+
+                            <div className="space-y-3">
+                                <h2 className="max-w-[14ch] text-3xl text-foreground sm:text-4xl">
+                                    Your time here means a lot.
+                                </h2>
+                                <p className="max-w-2xl text-base leading-7 text-foreground/76">
+                                    Whether you came to explore the work, check the technical details, or simply look around, I appreciate you spending part of your day here.
+                                </p>
+                                <p className="max-w-2xl text-sm uppercase tracking-[0.22em] text-[color:var(--foreground-muted)]">
+                                    Built with care, clarity, and respect for the people using it.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col gap-5 md:items-end">
+                            <div className="flex flex-wrap gap-3 md:justify-end">
+                                {footerLinks.map((link) => (
+                                    <Link
+                                        key={link.label}
+                                        href={link.href}
+                                        className="rounded-full border border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.045)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--foreground-subtle)] transition-colors hover:text-foreground"
+                                    >
+                                        {link.label}
+                                    </Link>
+                                ))}
+                            </div>
+
+                            <Link
+                                href="#hero"
+                                className="inline-flex items-center gap-2 rounded-full border border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.08)] px-5 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-foreground transition-transform hover:-translate-y-0.5"
+                            >
+                                Back to top
+                                <ArrowUpRight className="h-4 w-4" />
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="border-t border-[color:var(--stroke-subtle)] px-6 py-4 md:px-8">
+                        <div className="flex flex-col gap-3 text-[0.72rem] uppercase tracking-[0.22em] text-[color:var(--foreground-muted)] md:flex-row md:items-center md:justify-between">
+                            <p>Denis Kirimi Portfolio</p>
+                            <p>Thoughtful systems for real-world work</p>
+                            <p>{new Date().getFullYear()}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
     );
 };
