@@ -12,11 +12,11 @@ export const Footer = () => {
     return (
         <footer className="relative z-10 px-4 pb-10 pt-8">
             <div className="mx-auto max-w-6xl">
-                <div className="overflow-hidden rounded-[2.4rem] border border-[color:var(--stroke-subtle)] bg-[linear-gradient(145deg,rgba(67,83,76,0.96),rgba(34,45,40,0.9))] shadow-[0_28px_70px_rgba(10,14,12,0.22),0_0_0_1px_rgba(255,244,234,0.05),inset_0_1px_0_rgba(255,248,237,0.18)]">
+                <div className="overflow-hidden rounded-[2.4rem] border border-border bg-card shadow-[0_28px_70px_rgba(10,14,12,0.22),0_0_0_1px_rgba(255,244,234,0.05),inset_0_1px_0_rgba(255,248,237,0.18)]">
                     <div className="grid gap-8 px-6 py-8 md:grid-cols-[minmax(0,1fr)_minmax(280px,0.72fr)] md:items-stretch md:px-8 md:py-9">
                         <div className="space-y-5">
-                            <div className="inline-flex items-center gap-3 rounded-full border border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.08)] px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[color:var(--foreground-subtle)] shadow-[0_0_24px_rgba(255,244,234,0.04)]">
-                                <HeartHandshake className="h-4 w-4 text-[color:var(--accent-secondary)]" />
+                            <div className="inline-flex items-center gap-3 rounded-full border border-border bg-muted/50 px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-secondary-foreground shadow-[0_0_24px_rgba(255,244,234,0.04)]">
+                                <HeartHandshake className="h-4 w-4 text-[color:var(--color-highlight)]" />
                                 Thanks for visiting
                             </div>
 
@@ -27,7 +27,7 @@ export const Footer = () => {
                                 <p className="max-w-2xl text-base leading-7 text-foreground/76">
                                     Whether you came to explore the work, check the technical details, or simply look around, I appreciate you spending part of your day here.
                                 </p>
-                                <p className="max-w-2xl text-sm uppercase tracking-[0.22em] text-[color:var(--foreground-muted)]">
+                                <p className="max-w-2xl text-sm uppercase tracking-[0.22em] text-muted-foreground">
                                     Built with care, clarity, and respect for the people using it.
                                 </p>
                             </div>
@@ -39,7 +39,7 @@ export const Footer = () => {
                                     <Link
                                         key={link.label}
                                         href={link.href}
-                                        className="rounded-full border border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.07)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--foreground-subtle)] transition-colors hover:bg-[rgb(255_244_234_/_0.12)] hover:text-foreground"
+                                        className="rounded-full border border-border bg-muted/50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-secondary-foreground transition-colors hover:bg-muted hover:text-foreground"
                                     >
                                         {link.label}
                                     </Link>

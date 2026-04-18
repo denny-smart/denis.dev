@@ -35,9 +35,9 @@ export const Hero = () => {
 
     return (
         <section className="relative flex min-h-[100svh] items-center overflow-hidden px-4 pb-10 pt-24 md:px-8 md:pb-14 md:pt-26" id="hero">
-            <div className="pointer-events-none absolute left-[4%] top-[12%] h-60 w-60 rounded-full bg-[rgb(223_132_91_/_0.16)] blur-3xl" />
-            <div className="pointer-events-none absolute bottom-[8%] right-[4%] h-72 w-72 rounded-full bg-[rgb(208_191_215_/_0.16)] blur-3xl" />
-            <div className="pointer-events-none absolute inset-x-[20%] top-[2%] h-44 rounded-full bg-[rgb(255_244_234_/_0.08)] blur-3xl" />
+            <div className="pointer-events-none absolute left-[4%] top-[12%] h-60 w-60 rounded-full bg-accent/16 blur-3xl" />
+            <div className="pointer-events-none absolute bottom-[8%] right-[4%] h-72 w-72 rounded-full bg-lilac/16 blur-3xl" />
+            <div className="pointer-events-none absolute inset-x-[20%] top-[2%] h-44 rounded-full bg-muted/8 blur-3xl" />
 
             <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-8 lg:grid-cols-[minmax(0,1.22fr)_minmax(300px,0.74fr)] lg:items-center xl:gap-14">
                 <motion.div
@@ -94,7 +94,7 @@ export const Hero = () => {
                             whileHover={{ y: -2 }}
                             whileTap={{ scale: 0.985 }}
                             transition={spring}
-                            className="inline-flex h-13 items-center gap-2 rounded-full border border-[rgba(223,132,91,0.24)] bg-[linear-gradient(180deg,#f8edd9,#f1dfc1)] px-6 text-[0.98rem] font-semibold text-primary-foreground shadow-[0_18px_38px_rgba(255,234,197,0.12),0_0_30px_rgba(223,132,91,0.12)]"
+                            className="inline-flex h-13 items-center gap-2 rounded-full border border-accent/24 bg-primary px-6 text-[0.98rem] font-semibold text-primary-foreground shadow-[0_18px_38px_rgba(255,234,197,0.12),0_0_30px_rgba(223,132,91,0.12)]"
                         >
                             <span>View Projects</span>
                             <ArrowUpRight className="h-4 w-4" />

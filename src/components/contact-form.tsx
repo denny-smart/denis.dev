@@ -21,7 +21,7 @@ export const ContactForm = ({ onSuccess, variant = "inline" }: ContactFormProps 
     const ease = [0.22, 1, 0.36, 1] as const;
     const floatEase = [0.37, 0, 0.18, 1] as const;
     const triggerSurface =
-        "group relative isolate w-full cursor-pointer overflow-hidden rounded-[1.95rem_1.55rem_2.15rem_1.7rem] border border-[color:var(--stroke-subtle)] bg-[linear-gradient(145deg,rgba(67,83,76,0.96),rgba(35,47,42,0.88))] p-6 text-left shadow-[0_28px_70px_rgba(10,14,12,0.24),0_0_0_1px_rgba(255,244,234,0.04),inset_0_1px_0_rgba(255,248,237,0.18),inset_0_-12px_24px_rgba(12,15,13,0.12)] backdrop-blur-xl transition-[border-color,box-shadow,transform] duration-500 hover:border-[rgba(223,132,91,0.34)] hover:shadow-[0_36px_86px_rgba(10,14,12,0.3),0_0_0_1px_rgba(223,132,91,0.14),0_0_46px_rgba(223,132,91,0.16),inset_0_1px_0_rgba(255,248,237,0.22)] md:p-8";
+        "group relative isolate w-full cursor-pointer overflow-hidden rounded-[1.95rem_1.55rem_2.15rem_1.7rem] border border-border bg-card p-6 text-left shadow-[0_28px_70px_rgba(10,14,12,0.24),0_0_0_1px_rgba(77,159,214,0.04),inset_0_1px_0_rgba(238,242,248,0.18),inset_0_-12px_24px_rgba(12,15,13,0.12)] backdrop-blur-xl transition-[border-color,box-shadow,transform] duration-500 hover:border-accent/34 hover:shadow-[0_36px_86px_rgba(10,14,12,0.3),0_0_0_1px_rgba(77,159,214,0.14),0_0_46px_rgba(77,159,214,0.16),inset_0_1px_0_rgba(238,242,248,0.22)] md:p-8";
     const modalSurface =
         "relative mx-auto flex w-full max-w-4xl justify-center";
 
@@ -124,21 +124,21 @@ export const ContactForm = ({ onSuccess, variant = "inline" }: ContactFormProps 
             <Card
                 disableHoverEffect
                 hideBottomAccent
-                className="relative flex min-h-[420px] flex-col justify-center overflow-hidden border-[color:var(--stroke-subtle)] bg-[var(--surface)] p-6 sm:p-8"
+                className="relative flex min-h-[420px] flex-col justify-center overflow-hidden border-border bg-card p-6 sm:p-8"
             >
                 <motion.div
                     aria-hidden="true"
-                    className="pointer-events-none absolute -right-12 top-10 h-32 w-32 rounded-full bg-[rgba(223,132,91,0.16)] blur-3xl"
+                    className="pointer-events-none absolute -right-12 top-10 h-32 w-32 rounded-full bg-accent/16 blur-3xl"
                     animate={{ x: [0, -10, 0], y: [0, 10, 0], opacity: [0.38, 0.55, 0.38] }}
                     transition={{ duration: 7.5, repeat: Infinity, ease: floatEase }}
                 />
                 <motion.div
                     aria-hidden="true"
-                    className="pointer-events-none absolute -left-10 bottom-8 h-24 w-24 rounded-full bg-[rgba(235,199,132,0.1)] blur-3xl"
+                    className="pointer-events-none absolute -left-10 bottom-8 h-24 w-24 rounded-full bg-lilac/10 blur-3xl"
                     animate={{ x: [0, 8, 0], y: [0, -8, 0], opacity: [0.2, 0.34, 0.2] }}
                     transition={{ duration: 9.2, repeat: Infinity, ease: floatEase }}
                 />
-                <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-transparent via-[rgba(200,115,77,0.55)] to-transparent" />
+                <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-transparent via-accent/55 to-transparent" />
 
                 <motion.div
                     initial={{ opacity: 0, y: 14 }}
@@ -146,8 +146,8 @@ export const ContactForm = ({ onSuccess, variant = "inline" }: ContactFormProps 
                     transition={{ ...spring, delay: 0.06 }}
                     className="mb-8 space-y-3"
                 >
-                    <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.04)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--foreground-subtle)]">
-                        <span className="h-2 w-2 rounded-full bg-[color:var(--accent-primary)]" />
+                    <div className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/30 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-secondary-foreground">
+                        <span className="h-2 w-2 rounded-full bg-accent" />
                         Contact
                     </div>
                     <div className="space-y-2">
@@ -168,7 +168,7 @@ export const ContactForm = ({ onSuccess, variant = "inline" }: ContactFormProps 
                             transition={spring}
                             className="py-8 text-center"
                         >
-                            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[rgb(223_132_91_/_0.18)] text-[color:var(--accent-primary)] shadow-[0_0_28px_rgba(223,132,91,0.18)]">
+                            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent/18 text-accent shadow-[0_0_28px_rgba(77,159,214,0.18)]">
                                 <Send className="h-8 w-8" />
                             </div>
                             <h4 className="mb-2 text-lg font-semibold text-foreground">Message sent</h4>
@@ -201,7 +201,7 @@ export const ContactForm = ({ onSuccess, variant = "inline" }: ContactFormProps 
                                     Email address
                                 </label>
                                 <div className="relative">
-                                    <Mail className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[color:var(--foreground-muted)]" />
+                                    <Mail className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                                     <input
                                         required
                                         type="email"
@@ -229,16 +229,16 @@ export const ContactForm = ({ onSuccess, variant = "inline" }: ContactFormProps 
 
                                             setEmailError(isValidEmail(value) ? null : "Please enter a valid email address.");
                                         }}
-                                        className={`w-full rounded-[1.2rem] border bg-[rgb(255_244_234_/_0.04)] py-3 pl-11 pr-4 text-foreground placeholder:text-[color:var(--foreground-muted)] transition-colors focus:bg-[rgb(255_244_234_/_0.06)] focus:outline-none ${
+                                        className={`w-full rounded-[1.2rem] border bg-muted/40 py-3 pl-11 pr-4 text-foreground placeholder:text-muted-foreground transition-colors focus:bg-muted/50 focus:outline-none ${
                                             emailError
-                                                ? "border-[rgba(200,115,77,0.7)] focus:border-[rgba(200,115,77,0.82)]"
-                                                : "border-[color:var(--stroke-subtle)] focus:border-accent/55"
+                                                ? "border-accent/70 focus:border-accent/82"
+                                                : "border-border focus:border-accent/55"
                                         }`}
                                     />
                                 </div>
-                                <p id="email-help" className="text-xs text-[color:var(--foreground-muted)]">I&apos;ll only use this to reply to your message.</p>
+                                <p id="email-help" className="text-xs text-muted-foreground">I&apos;ll only use this to reply to your message.</p>
                                 {emailError && (
-                                    <p id="email-error" className="text-xs text-[color:var(--accent-primary)]">
+                                    <p id="email-error" className="text-xs text-accent">
                                         {emailError}
                                     </p>
                                 )}
@@ -254,17 +254,17 @@ export const ContactForm = ({ onSuccess, variant = "inline" }: ContactFormProps 
                                     Your message
                                 </label>
                                 <div className="relative">
-                                    <MessageSquare className="pointer-events-none absolute left-4 top-4 h-4 w-4 text-[color:var(--foreground-muted)]" />
+                                    <MessageSquare className="pointer-events-none absolute left-4 top-4 h-4 w-4 text-muted-foreground" />
                                     <textarea
                                         required
                                         name="request"
                                         id="request"
                                         rows={5}
                                         placeholder="Tell me a little about what you&apos;re working on or how I can help."
-                                        className="w-full resize-none rounded-[1.2rem] border border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.04)] py-3 pl-11 pr-4 text-foreground placeholder:text-[color:var(--foreground-muted)] transition-colors focus:border-accent/55 focus:bg-[rgb(255_244_234_/_0.06)] focus:outline-none"
+                                        className="w-full resize-none rounded-[1.2rem] border border-border bg-muted/40 py-3 pl-11 pr-4 text-foreground placeholder:text-muted-foreground transition-colors focus:border-accent/55 focus:bg-muted/50 focus:outline-none"
                                     />
                                 </div>
-                                <p className="text-xs text-[color:var(--foreground-muted)]">Keep it short if you like. A few lines is plenty.</p>
+                                <p className="text-xs text-muted-foreground">Keep it short if you like. A few lines is plenty.</p>
                             </motion.div>
 
                             <motion.div

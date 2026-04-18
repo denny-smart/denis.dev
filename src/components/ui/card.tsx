@@ -28,13 +28,13 @@ export const Card = ({
             whileTap={disableHoverEffect ? undefined : { scale: 0.995 }}
             transition={{ type: "spring", stiffness: 100, damping: 15, mass: 0.8 }}
             className={cn(
-                "group relative isolate overflow-hidden rounded-[1.9rem_1.45rem_2.15rem_1.55rem] border border-white/12 bg-[linear-gradient(145deg,rgba(62,78,72,0.94),rgba(34,45,40,0.84))] text-card-foreground shadow-[0_28px_70px_rgba(10,14,12,0.24),0_0_0_1px_rgba(255,244,234,0.04),inset_0_1px_0_rgba(255,248,237,0.18),inset_0_-16px_28px_rgba(12,15,13,0.12)] backdrop-blur-xl transition-[border-color,box-shadow,transform] duration-500",
-                !disableHoverEffect && "hover:border-accent/42 hover:shadow-[0_36px_90px_rgba(10,14,12,0.28),0_0_0_1px_rgba(223,132,91,0.12),0_0_54px_rgba(223,132,91,0.14),inset_0_1px_0_rgba(255,248,237,0.24),inset_0_-16px_28px_rgba(12,15,13,0.16)]",
+                "group relative isolate overflow-hidden rounded-[1.9rem_1.45rem_2.15rem_1.55rem] border border-border bg-card text-card-foreground shadow-[0_28px_70px_rgba(10,14,12,0.24),0_0_0_1px_rgba(255,244,234,0.04),inset_0_1px_0_rgba(255,248,237,0.18),inset_0_-16px_28px_rgba(12,15,13,0.12)] backdrop-blur-xl transition-[border-color,box-shadow,transform] duration-500",
+                !disableHoverEffect && "hover:border-accent/42 hover:shadow-[0_36px_90px_rgba(10,14,12,0.28),0_0_0_1px_rgba(77,223,214,0.12),0_0_54px_rgba(77,223,214,0.14),inset_0_1px_0_rgba(255,248,237,0.24),inset_0_-16px_28px_rgba(12,15,13,0.16)]",
                 !noPadding && "p-6 md:p-7",
                 className
             )}
         >
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,247,234,0.22),transparent_30%),radial-gradient(circle_at_88%_18%,rgba(255,228,186,0.14),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(223,132,91,0.18),transparent_24%)] opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,247,234,0.22),transparent_30%),radial-gradient(circle_at_88%_18%,rgba(255,228,186,0.14),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(77,159,214,0.18),transparent_24%)] opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
             <div
                 className="pointer-events-none absolute inset-0 opacity-[0.14] mix-blend-soft-light"
                 style={{

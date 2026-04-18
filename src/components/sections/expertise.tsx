@@ -33,10 +33,10 @@ const expertiseData = [
 export const Expertise = () => {
     const spring = { type: "spring" as const, stiffness: 100, damping: 15, mass: 0.8 };
     const surfaces = [
-        "bg-[var(--surface)]",
-        "bg-[var(--surface-soft)]",
-        "bg-[var(--surface-muted)]",
-        "bg-[rgb(37_48_43)]"
+        "bg-card",
+        "bg-secondary",
+        "bg-muted",
+        "bg-secondary"
     ];
 
     return (
@@ -65,9 +65,9 @@ export const Expertise = () => {
                             transition={{ ...spring, delay: i * 0.08 }}
                             viewport={{ once: true }}
                         >
-                            <article className={`h-full rounded-[1.85rem] border border-[color:var(--stroke-subtle)] ${surfaces[i % surfaces.length]} p-7 shadow-[10px_10px_0_var(--shadow-hard)]`}>
+                            <article className={`h-full rounded-[1.85rem] border border-border ${surfaces[i % surfaces.length]} p-7 shadow-[10px_10px_0_rgba(10,14,12,0.4)]`}>
                                 <div className="space-y-6">
-                                    <div className="inline-flex rounded-[1rem] border border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.045)] p-3 text-[color:var(--accent-primary)]">
+                                    <div className="inline-flex rounded-[1rem] border border-border bg-secondary/50 p-3 text-accent">
                                         <item.icon className="h-6 w-6" />
                                     </div>
                                     <h3 className="text-2xl text-foreground">
@@ -80,7 +80,7 @@ export const Expertise = () => {
                                         {item.tags.map((tag) => (
                                             <span
                                                 key={tag}
-                                                className="rounded-full border border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.05)] px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--foreground-subtle)]"
+                                                className="rounded-full border border-border bg-muted/40 px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-secondary-foreground"
                                             >
                                                 {tag}
                                             </span>

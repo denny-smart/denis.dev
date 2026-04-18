@@ -23,12 +23,12 @@ export const Stats = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ ...spring, delay: i * 0.08 }}
                             viewport={{ once: true }}
-                            className="rounded-[1.7rem] border border-[color:var(--stroke-subtle)] bg-[var(--surface-soft)] px-5 py-6 text-center shadow-[8px_8px_0_var(--shadow-hard),0_0_30px_rgba(255,244,234,0.03)]"
+                            className="rounded-[1.7rem] border border-border bg-secondary px-5 py-6 text-center shadow-[8px_8px_0_rgba(10,14,12,0.4),0_0_30px_rgba(77,159,214,0.04)]"
                         >
                             <h3 className="text-4xl text-foreground sm:text-5xl">
                                 {stat.value}
                             </h3>
-                            <p className="mt-3 text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-[color:var(--foreground-muted)]">
+                            <p className="mt-3 text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                                 {stat.label}
                             </p>
                         </motion.div>

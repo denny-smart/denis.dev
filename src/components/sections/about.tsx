@@ -18,7 +18,7 @@ export const About = () => {
             <div className="mx-auto max-w-6xl space-y-10 md:space-y-14">
                 <div className="grid gap-8 md:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] md:items-start">
                     <div className="space-y-4">
-                        <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[color:var(--foreground-muted)]">
+                        <p className="text-sm font-semibold uppercase tracking-[0.28em] text-muted-foreground">
                             About
                         </p>
                         <h2 className="text-4xl text-foreground sm:text-5xl">
@@ -29,7 +29,7 @@ export const About = () => {
                         <p className="max-w-3xl text-lg leading-8 text-foreground/76">
                             I build reliable digital products with a strong focus on clarity. My work sits across backend systems, automation, and technical problem-solving, but the goal is always simple: create tools that are powerful, practical, and easy for people to trust.
                         </p>
-                        <p className="max-w-2xl text-sm uppercase tracking-[0.24em] text-[color:var(--foreground-muted)]">
+                        <p className="max-w-2xl text-sm uppercase tracking-[0.24em] text-muted-foreground">
                             I care about how systems feel in real use, not just how they look on a diagram.
                         </p>
                     </div>
@@ -43,10 +43,10 @@ export const About = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ ...spring, delay: i * 0.08 }}
                             viewport={{ once: true }}
-                            className="flex items-start gap-5 rounded-[1.6rem] border border-[color:var(--stroke-subtle)] bg-[var(--surface-soft)] p-6 shadow-[8px_8px_0_var(--shadow-hard)]"
+                            className="flex items-start gap-5 rounded-[1.6rem] border border-border bg-secondary p-6 shadow-[8px_8px_0_rgba(10,14,12,0.4)]"
                         >
-                            <div className="mt-1 rounded-[1rem] border border-[color:var(--stroke-subtle)] bg-[rgb(255_244_234_/_0.04)] p-2.5">
-                                <CheckCircle2 className="h-5 w-5 shrink-0 text-[color:var(--accent-primary)]" />
+                            <div className="mt-1 rounded-[1rem] border border-border bg-secondary/30 p-2.5">
+                                <CheckCircle2 className="h-5 w-5 shrink-0 text-accent" />
                             </div>
                             <p className="max-w-sm leading-8 text-foreground/80">{principle}</p>
                         </motion.div>
